@@ -1,8 +1,6 @@
 <?php
-session_start();
-
-// Database connection
-$conn = mysqli_connect('localhost', 'root', '', 'bellelise');
+include("connection.php");
+include("validation.php");
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
@@ -129,11 +127,14 @@ $all_product = $stmt->get_result();
         
         <!-- add to cart and wishlist -->
         <div class="btn-group">
-            <form action="add-to-cart.php" method="POST">
-            <input type="hidden" name="product_id" value="1">
-            <button class="add-btn" type="submit"><i class="fa-solid fa-cart-shopping"></i>  ADD TO CART</button>
+            <form class="cart-btn-form" action="add-to-cart.php" method="POST">
+              <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($row['product_id']); ?>">
+              <button class="add-btn" type="submit"><i class="fa-solid fa-cart-shopping"></i>  ADD TO CART</button>
             </form>
-            <button class="add-btn wishlist" type="submit"><i class="fa-regular fa-heart"></i>  ADD TO WISHLIST</button>
+            <form class="cart-btn-form" action="add-to-cart.php" method="POST">
+              <input type="hidden" name="product_id" value="1">
+              <button class="add-btn wishlist" type="submit"><i class="fa-regular fa-heart"></i>  ADD TO WISHLIST</button>
+            </form>
         </div><br>
 
 

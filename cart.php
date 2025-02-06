@@ -1,25 +1,22 @@
 <?php
 
-    session_start();
-
-    //making a connection with Add to cart database
-    
-    $conn=mysqli_connect('localhost','root');
-    mysqli_select_db($conn,'bellelise');
+    include("connection.php");
+    include("validation.php");
 
     // Fetch all items from the cart
     $sql = "SELECT 
     cart.product_id,
     product.*
-    FROM 
-    cart 
-    LEFT JOIN 
-    product ON cart.product_id = product.product_id
-    WHERE
-    cart.user_id = $_SESSION[user_id];"
+    FROM cart 
+    LEFT JOIN product ON cart.product_id = product.product_id
+    WHERE cart.user_id = $_SESSION[user_id];";
     ;
 
-    $all_product=$conn->query($sql);
+    $all_product = $conn->query($sql);
+
+    if (!$all_product) {
+      die("Query failed: " . $conn->error);
+  }
 
     $total_sum = 0;
 

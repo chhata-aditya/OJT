@@ -8,7 +8,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bellelise & Co.</title>
+    <link rel="icon" href="images/logo-removebg.png">
 
     <!--google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">

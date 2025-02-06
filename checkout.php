@@ -111,7 +111,7 @@ $total_sum = 0;
         <p>Shipping: <strong>FREE</strong></p>
         <hr>
         <p><strong>Grand Total: ₹<?php echo $_SESSION['total_sum']; ?></strong></p>
-        <button class="checkout-btn" onclick="openOffcanvas()">Pay Now</button>
+        <a href="https://rzp.io/rzp/358VclAz"><button class="checkout-btn">Pay Now</button></a>
     </div>
 </div>
 

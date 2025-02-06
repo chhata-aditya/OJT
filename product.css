@@ -75,6 +75,14 @@ body{
     transition: background-color 0.8s ease;
 }
 
+.cart-btn-form{
+    width: 50%;
+}
+
+.cart-btn-form button{
+    width: 100%;
+}
+
 .container .description .wishlist{
     background-color: white;
     color: #b69d7a;

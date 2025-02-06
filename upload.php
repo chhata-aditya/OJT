@@ -1,12 +1,7 @@
 <?php
 session_start();
 
-// Database connection
-$conn = mysqli_connect('localhost', 'root', '', 'project');
-
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+include("connection.php");
 
 // Define the upload folder
 $target_dir = "uploads/";
@@ -14,7 +9,9 @@ $target_dir = "uploads/";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Get the product details from the form
     $product_name = $_POST['product_name'];
+    $product_description = $_POST['product_description'];
     $product_type = $_POST['product_type'];
+    $f_category = $_POST['f_category'];
     $product_price = $_POST['product_price'];
 
     // Initialize file paths
@@ -66,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // If both images are uploaded, insert into the database
     if ($target_file1 && $target_file2) {
-        $stmt = $conn->prepare("INSERT INTO featured (product_name, product_type, product_image, image2, product_price) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO product (product_name,product_description ,product_type,f_category,product_price, product_image, image2) VALUES (?,?, ?,?, ?, ?, ?)");
         $stmt->bind_param("ssssd", $product_name, $product_type, $target_file1, $target_file2, $product_price);
 
         if ($stmt->execute()) {
@@ -136,6 +133,9 @@ $conn->close();
     <label for="product_name">Product Name:</label><br>
     <input type="text" name="product_name" id="product_name" required><br>
 
+    <label for="product_description">Product description:</label><br>
+    <input type="textarea" name="product_description" id="product_description" required><br>
+
     <label for="product_type">Product Type:</label><br>
     <select name="product_type" id="product_type" required>
         <option value="" disabled selected>Select a type</option>
@@ -145,14 +145,23 @@ $conn->close();
         <option value="Rings">Rings</option>
     </select><br>
 
-    <label for="product_price">Product Price:</label><br>
-    <input type="number" step="0.01" name="product_price" id="product_price" required><br>
+    <label for="f_category">Product Type:</label><br>
+    <select name="f_category" id="f_category">
+        <option value="" disabled selected>Select a featured category</option>
+        <option value="Titanic">Titanic</option>
+        <option value="Rapunzel">Rapunzel</option>
+        <option value="Bridgerton">Bridgerton</option>
+        <option value="Gatsby">Gatsby</option>
+    </select><br>
 
     <label for="product_image">Product Image:</label><br>
     <input type="file" name="product_image" id="product_image" required><br>
 
     <label for="image2">Product Image 2:</label><br>
     <input type="file" name="image2" id="image2" required><br>
+
+    <label for="product_price">Product Price:</label><br>
+    <input type="number" step="0.01" name="product_price" id="product_price" required><br>
 
     <button type="submit">Upload Product</button>
 </form>
