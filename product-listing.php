@@ -3,7 +3,7 @@ session_start();
 include("connection.php");
 
 // Initialize filters
-$type = isset($_GET['product_type']) ? $_GET['product_type'] : "";
+$product_type = isset($_GET['product_type']) ? $_GET['product_type'] : "";
 $min_price = isset($_GET['min_price']) ? $_GET['min_price'] : 0;
 $max_price = isset($_GET['max_price']) ? $_GET['max_price'] : PHP_INT_MAX;
 $material = isset($_GET['material']) ? $_GET['material'] : "";
@@ -13,9 +13,9 @@ $sql = "SELECT * FROM product WHERE 1=1";
 $params = [];
 $types = "";
 
-if (!empty($type)) {
-    $sql .= " AND type = ?";
-    $params[] = $type;
+if (!empty($product_type)) {
+    $sql .= " AND product_type = ?";
+    $params[] = $product_type;
     $types .= "s";
 }
 
@@ -76,11 +76,11 @@ $all_product = $stmt->get_result();
     </label>
 
     <ul class="nav__links">
-        <li><a href="#">Collections</a></li>
-        <li><a href="#">Featured</a></li>
-        <li><a class="active" href="#">Products</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="collections.php">Collections</a></li>
+        <li><a href="featured.php">Featured</a></li>
+        <li><a class="active" href="product-listing.php">Products</a></li>
+        <li><a href="about.php">About Us</a></li>
+        <li><a href="index.php">Home</a></li>
     </ul>
 
     <div class="icon-container cta">
@@ -110,10 +110,10 @@ $all_product = $stmt->get_result();
     <div class="sidebar-section">
         <p>Categories</p>
         <ul>
-            <li><a href="?type=Necklaces">Necklaces</a></li>
-            <li><a href="?type=Earrings">Earrings</a></li>
-            <li><a href="?type=Bracelets">Bracelets</a></li>
-            <li><a href="?type=Rings">Rings</a></li>
+            <li><a href="?product_type=Necklace">Necklaces</a></li>
+            <li><a href="?product_type=Earrings">Earrings</a></li>
+            <li><a href="?product_type=Bracelets">Bracelets</a></li>
+            <li><a href="?product_type=Rings">Rings</a></li>
         </ul>
     </div> <br>
 

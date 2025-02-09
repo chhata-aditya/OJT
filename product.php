@@ -88,9 +88,9 @@ $all_product = $stmt->get_result();
     <ul class="nav__links">
         <li><a href="collections.php">Collections</a></li>
         <li><a href="featured.php">Featured</a></li>
-        <li><a class="active" href="#">Products</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">About</a></li>
+        <li><a class="active" href="product-listing.php">Products</a></li>
+        <li><a href="about.php">About Us</a></li>
+        <li><a href="index.php">Home</a></li>
     </ul>
 
     <div class="icon-container cta">

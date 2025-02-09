@@ -379,16 +379,18 @@ main .card a{
     background-color: #c6ad8a;
 }
 
-/* Adjust main content for the sidebar */
-.content {
-    margin-left: 270px; /* Adjusted for sidebar width */
-    padding: 20px;
-}
-
 .main-container{
     display: flex;
     justify-content: space-between; /* Adjust as needed */
     gap: 20px; /* Space between divs */
+}
+
+/* Adjust main content for the sidebar */
+.content {
+    margin-left: 0px; /* Adjusted for sidebar width */
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 
