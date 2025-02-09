@@ -22,27 +22,30 @@
 	<body class="home-page">
 
 <!--header/navbar-->
-		<header>
-			<p class="logo">Logo</p>
-			<input type="checkbox" id="click">
-			<label for="click" class="menu-btn">
-				<i class="fas fa-bars"></i>
-			</label>
-		
-			<ul class="nav__links">
-        <li><a href="collections.php">Collections</a></li>
-        <li><a class="active" href="featured.php">Featured</a></li>
-        <li><a href="product-listing.php">Products</a></li>
+	
+
+<header>
+    <p class="logo">Bellelise</p>
+    <input type="checkbox" id="click">
+    <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+    </label>
+
+    <ul class="nav__links">
+        <li><a class="active"href="collections.php">Collections</a></li>
+        <li><a href="featured.php">Featured</a></li>
+        <li><a  href="product-listing.php">Products</a></li>
         <li><a href="about.php">About Us</a></li>
         <li><a href="index.php">Home</a></li>
     </ul>
-		
-			<div class="icon-container cta">
+
+    <div class="icon-container cta">
         <a href="profile.php"><i class="fa-solid fa-user fa-xl"></i></a>
         <a href="wishlist.php"><i class="fa-solid fa-heart fa-xl"></i></a>
         <a href="cart.php"><i class="fa-solid fa-cart-shopping fa-xl"></i></a>
     </div>
-		</header>
+</header>
+
 
 <!--featured section
     <div class="f-section">
@@ -70,27 +73,38 @@
 
 <div class="banner-section left-layout">
     <div class="image-container">
-        <img src="images/banner1.jpg" alt="Sample Image">
+        <img src="images/nec1.jpg" alt="Sample Image">
     </div>
-    <h1 class="banner-text">The Titanic Collection</h1>
+    <a href="product-listing.php?product_type=Necklace" style="background-color: #eeeeee;"><h1 class="banner-text">The Necklaces Collection</h1></a>
 </div>
 
 <div class="banner-section right-layout">
-    <h1 class="banner-text">The Rapunzel Collection</h1>
+    <h1 class="banner-text">The Earrings Collection</h1>
     <div class="image-container">
-        <img src="images/banner2.jpg" alt="Sample Image">
+        <img src="images/ear1.jpg" alt="Sample Image">
     </div>
 </div>
 
 <div class="banner-section left-layout">
     <div class="image-container">
-        <img src="images/banner3.jpg" alt="Sample Image">
+        <img src="images/rin1.jpg" alt="Sample Image">
     </div>
-    <h1 class="banner-text">The Bridgerton Collection</h1>
+    <h1 class="banner-text">The Rings Collection</h1>
 </div>
 
+<div class="banner-section right-layout">
+    <h1 class="banner-text">The Bracelets Collection</h1>
+    <div class="image-container">
+        <img src="images/bre1.jpg" alt="Sample Image">
+    </div>
+</div>
 
-
+<div class="banner-section left-layout">
+    <div class="image-container">
+        <img src="images/ank1.jpg" alt="Sample Image">
+    </div>
+    <h1 class="banner-text">The Anklet Collection</h1>
+</div>
 
 <!--footer-->
 <section class="footer">

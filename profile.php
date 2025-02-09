@@ -38,7 +38,7 @@
 <!-- header / navbar -->
 
 <header>
-    <p class="logo">Bellelise</p>
+<a href="index.php"><p class="logo">Bellelise</p></a>
     <input type="checkbox" id="click">
     <label for="click" class="menu-btn">
         <i class="fas fa-bars"></i>

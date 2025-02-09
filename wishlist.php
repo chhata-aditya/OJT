@@ -89,21 +89,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $addressSaved = isset($_SESSION['address']);
 ?>
 
+<!-- cart ordering links -->
+<div class="order-links">
+<h2 class="active">YOUR WISHLIST</h2>
+</div>
 
 <!-- Featured Section -->
 <div class="cart-wrapper">
     <!-- Left: Cart Items -->
     <div class="cart-container">
 
-<!-- print address, if any -->
-<div class="address-box border-box"  style="display: <?php echo $addressSaved ? '' : 'none'; ?>"   >
-<?php
-if (isset($_SESSION['address']) && is_array($_SESSION['address'])) {
-    $address = $_SESSION['address'];
-    echo "<p>{$address['Fname']} {$address['Lname']}, {$address['houseno']}, {$address['street']}, {$address['landmark']}, {$address['city']}, {$address['postal']}</p>";
-}
-?>
-</div>
+
 
 <!-- show all cart items -->
 <div class="cart-box border-box">

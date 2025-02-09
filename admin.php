@@ -30,7 +30,7 @@
     <div class="sidebar" id="sidebar">
       <div class="brand">
         <i class="fas fa-gem"></i>
-        <span>JEWEL</span>
+        <span>BELLELISE</span>
       </div>
         <div class="user-info"> 
             
@@ -49,7 +49,7 @@
      
       <ul class="nav-links">
         <li><a href="admin.php" class="active"><i class="fas fa-tachometer-alt "></i> Dashboard</a></li>
-        <li><a href="admin-product.php"><i class="fas fa-box"></i> Product</a></li>
+        <li><a href=""><i class="fas fa-box"></i> Product</a></li>
         <li><a href="#"><i class="fas fa-list"></i> Order List</a></li>
         <li><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
         <li><a href="#"><i class="fas fa-warehouse"></i> Stock</a></li>
@@ -57,7 +57,7 @@
         <li><a href="#"><i class="fas fa-users"></i> Team</a></li>
         <li><a href="#"><i class="fas fa-envelope"></i> Messages</a></li>
         <li><a href="#"><i class="fas fa-cogs"></i> Settings</a></li>
-        <li><a href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+        <li><a href=""><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
       </ul>
     </div>
 
@@ -192,8 +192,8 @@
         if ($result->num_rows > 0) {
           while ($row = $result->fetch_assoc()) {
             echo "<tr>
-              <td>{$row['id']}</td>
-              <td>{$row['name']}</td>
+              <td>{$row['review_id']}</td>
+              <td>{$row['user_name']}</td>
               <td>{$row['review']}</td>
              
             </tr>";

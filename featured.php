@@ -23,7 +23,7 @@
 
 <!--header/navbar-->
 		<header>
-			<p class="logo">Logo</p>
+    <a href="index.php"><p class="logo">Bellelise</p></a>
 			<input type="checkbox" id="click">
 			<label for="click" class="menu-btn">
 				<i class="fas fa-bars"></i>
@@ -64,7 +64,8 @@
     <div class="image-container">
         <img src="images/banner1.jpg" alt="Sample Image">
     </div>
-    <h1 class="banner-text">The Titanic Collection</h1>
+      <a href="product-listing.php?f_category=Titanic" style="background-color: #eeeeee;"><h1 class="banner-text">The Titanic Collection</h1></a>
+    <br>
 </div>
 
 <div class="banner-section right-layout">

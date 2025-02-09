@@ -15,8 +15,8 @@
       <div class="responsive-container-block leftSide">
         <p class="text-blk heading">About Us</p>
         <p class="text-blk subHeading" style="color:rgb(65, 65, 66);">
-          Semaj Africa is an online education platform that delivers video courses, programs, and resources for individuals, advertising &amp; media specialists, online marketing professionals, freelancers, and anyone looking to pursue a career in digital marketing, accounting, web development, programming, multimedia, and CAD design.
-        </p>
+        Welcome to Bellelise, where elegance meets craftsmanship in every piece. Our online jewelry store offers a stunning collection of finely crafted jewelry designed to make you feel extraordinary. Whether you're searching for timeless classics, contemporary designs, or something uniquely personal, Bellelise is dedicated to bringing you exquisite pieces that reflect your individual style. Each item is meticulously crafted with attention to detail and made from the finest materials, ensuring that your purchase is not just jewelry, but an investment in beauty and quality. Explore our collections and discover the perfect piece that speaks to you.       
+      </p>
       </div>
       <div class="responsive-container-block rightSide">
         <img class="number1img" src="images/a1.jpg" alt="Image 1">

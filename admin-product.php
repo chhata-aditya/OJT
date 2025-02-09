@@ -29,7 +29,7 @@
     <div class="sidebar" id="sidebar">
       <div class="brand">
         <i class="fas fa-gem"></i>
-        <span>JEWEL</span>
+        <span>BELLELISE</span>
       </div>
         <div class="user-info"> 
             
@@ -56,7 +56,7 @@
         <li><a href="#"><i class="fas fa-users"></i> Team</a></li>
         <li><a href="#"><i class="fas fa-envelope"></i> Messages</a></li>
         <li><a href="#"><i class="fas fa-cogs"></i> Settings</a></li>
-        <li><a href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+        <li><a href=""><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
       </ul>
     </div>
 

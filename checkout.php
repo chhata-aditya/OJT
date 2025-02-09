@@ -110,11 +110,19 @@ $total_sum = 0;
     <!-- Right: Total Bill Summary -->
     <div class="total-bill">
         <h2>Order Summary</h2>
+        
         <p>Total Items: <strong><?php echo $all_product->num_rows; ?></strong></p>
         <p>Subtotal: <strong>₹<?php echo $_SESSION['total_sum']; ?></strong></p>
         <p>Shipping: <strong>FREE</strong></p>
         <hr>
         <p><strong>Grand Total: ₹<?php echo $_SESSION['total_sum']; ?></strong></p>
+        <form id="payment-form" action="generate_invoice.php" method="POST" style="display: inline;">
+          <input type="hidden" name="order_id" value="12345"> <!-- Dynamic Order ID -->
+          <button type="submit" style="text-decoration: underline;border: none;background: none; color: grey; padding: 0; font-size: 16px; cursor: pointer; border-radius: 5px;">
+             Download Invoice
+          </button>
+        </form>
+        <br><br>
         <a href="https://rzp.io/rzp/358VclAz"><button class="checkout-btn">Pay Now</button></a>
     </div>
 </div>
@@ -132,12 +140,12 @@ $total_sum = 0;
         <p>Shipping: <strong>FREE</strong></p>
         <hr>
         <p><strong>Grand Total: ₹4,999</strong></p><br>
+        
         <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_PctAqc1LTJSbC9" async> </script> </form>
     </div>
         
     </div>
 </div>
-
 
 <style>
 
@@ -217,6 +225,30 @@ $total_sum = 0;
 // Close the database connection
 $conn->close();
 ?>
+
+
+<script>
+document.getElementById("pay-now").addEventListener("click", function () {
+    // Generate Invoice First
+    let form = document.createElement("form");
+    form.method = "POST";
+    form.action = "generate_invoice.php";
+    
+    let input = document.createElement("input");
+    input.type = "hidden";
+    input.name = "order_id";
+    input.value = "12345"; // Replace with dynamic order ID
+    
+    form.appendChild(input);
+    document.body.appendChild(form);
+    form.submit();
+
+    // After 3 seconds, open Razorpay Payment
+    setTimeout(() => {
+        window.location.href = "razorpay_payment_page.php"; // Redirect to Razorpay
+    }, 3000);
+});
+</script>
 
 
 <!-- offcanvas form script -->

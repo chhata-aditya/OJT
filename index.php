@@ -67,12 +67,12 @@
       <img class="left-img" src="images/collection1.png" alt="">
       <h1>Collections</h1>
       <a href="collections.php"><button><h3>View Collections</h3></button></a>
-      <img class="right-img" src="images/banner1.jpg" alt="">
 </div>
 
     </section>
 
     <section class="et-slide col2" id="tab-flexbox">
+      <img class="right-img" src="images/ring.png" alt="">
       <h1>Featured</h1>
       <a href="featured.php"><button><h3>View Featured Sets</h3></button></a>
     </section>
@@ -83,13 +83,15 @@
     </section>
 
     <section class="et-slide col4" id="tab-angular">
-      <h1>About Us</h1>
-      <h3>Learn More</h3>
+    <h1>About Us</h1>
+    
+    <a href="about.php"><button><h3>Learn More</h3></button></a>
     </section>
 
     <section class="et-slide col5" id="tab-other">
-      <h1>Other</h1>
-      <h3></h3>
+    <h1>Customer Reviews</h1>
+    
+    <a href="review.php"><button><h3>Click to write review</h3></button></a>
     </section>
   </main>
 
