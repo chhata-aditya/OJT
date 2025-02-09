@@ -252,7 +252,7 @@ main .card{
     height: 350px;
     border: none;
     margin: 10px;
-    margin-top: 150px;
+    margin-top: 0px;
     margin-bottom: 20px;
 }
 
@@ -383,6 +383,12 @@ main .card a{
 .content {
     margin-left: 270px; /* Adjusted for sidebar width */
     padding: 20px;
+}
+
+.main-container{
+    display: flex;
+    justify-content: space-between; /* Adjust as needed */
+    gap: 20px; /* Space between divs */
 }
 
 

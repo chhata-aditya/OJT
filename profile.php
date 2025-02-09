@@ -65,19 +65,15 @@
     <p class="heading">PROFILE INFORMATION</p>
     <div class="profile">
       <label class="text" for="email">Email ID</label><br>
-      <input type="text" value="adityachhata@gmail.com" readonly>
+      <input type="text" value="<?php echo $_SESSION['user_email']; ?>" readonly>
       <br><br>
       <hr>
       <p class="heading">General Information</p>
       <br>
       <div class="half-input">
-        <div class="col-md-4">
-          <label class="text" for="fname">First Name</label>
+        <div class="col-md-12">
+          <label class="text" for="name">Full Name</label>
           <input type="text" value="<?php echo $_SESSION['user_name']; ?>" readonly>
-        </div>
-        <div class="col-md-4">
-          <label class="text" for="lname">Last Name</label>
-          <input type="text" value="Chhata" readonly>
         </div>
       </div>
       <br>

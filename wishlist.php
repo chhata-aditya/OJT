@@ -1,27 +1,42 @@
 <?php
-session_start();
-include('connection.php');
 
-// Fetch all items from the cart
-$sql = "SELECT 
-cart.product_id,
-product.*
-FROM 
-cart 
-LEFT JOIN 
-product ON cart.product_id = product.product_id
-WHERE
-cart.user_id = $_SESSION[user_id];"
-;
+    include("connection.php");
+    include("validation.php");
 
-$all_product=$conn->query($sql);
+    // Fetch all items from the cart
+    $sql = "SELECT 
+    cart.product_id,
+    product.*
+    FROM cart 
+    LEFT JOIN product ON cart.product_id = product.product_id
+    WHERE cart.user_id = $_SESSION[user_id];";
+    ;
 
-$total_sum = 0;
+    $all_product = $conn->query($sql);
+
+    if (!$all_product) {
+      die("Query failed: " . $conn->error);
+  }
+
+    $total_sum = 0;
+
+  // Save the address from the form
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $_SESSION['address'] = [
+      'Fname' => $_POST['Fname'],
+      'Lname' => $_POST['Lname'],
+      'houseno' => $_POST['houseno'],
+      'street' => $_POST['street'],
+      'landmark' => $_POST['landmark'],
+      'postal' => $_POST['postal'],
+      'city' => $_POST['city']
+  ];
+  header("Location: cart.php");
+  exit();
+}
+
 
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html>
@@ -38,7 +53,6 @@ $total_sum = 0;
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/6105985899.js" crossorigin="anonymous"></script>
-
 
     <!-- CSS -->
     <link rel="stylesheet" href="cart.css">
@@ -58,7 +72,7 @@ $total_sum = 0;
     <ul class="nav__links">
         <li><a href="collections.php">Collections</a></li>
         <li><a href="featured.php">Featured</a></li>
-        <li><a class="active" href="">Products</a></li>
+        <li><a href="#">Products</a></li>
         <li><a href="#">About Us</a></li>
         <li><a href="#">About</a></li>
     </ul>
@@ -70,88 +84,58 @@ $total_sum = 0;
     </div>
 </header>
 
-
-<!-- cart ordering links -->
-<div class="order-links">
-<a href="cart.php" class="active">My Bag</a>
-<p class="active"> ----- </p>
-<a href="delivery-address.php" class="active">Address</a>
-<p class="active"> ----- </p>
-<a href="checkout.php" class="active">Payment</a>
-</div>
-
+<?php
+// check if address is saved
+$addressSaved = isset($_SESSION['address']);
+?>
 
 
 <!-- Featured Section -->
 <div class="cart-wrapper">
     <!-- Left: Cart Items -->
     <div class="cart-container">
+
+<!-- print address, if any -->
+<div class="address-box border-box"  style="display: <?php echo $addressSaved ? '' : 'none'; ?>"   >
+<?php
+if (isset($_SESSION['address']) && is_array($_SESSION['address'])) {
+    $address = $_SESSION['address'];
+    echo "<p>{$address['Fname']} {$address['Lname']}, {$address['houseno']}, {$address['street']}, {$address['landmark']}, {$address['city']}, {$address['postal']}</p>";
+}
+?>
+</div>
+
+<!-- show all cart items -->
+<div class="cart-box border-box">
         <?php if ($all_product->num_rows > 0): ?>
             <?php while ($row = $all_product->fetch_assoc()): ?>
                 <div class="cart-item">
-                    <div class="cart-img">
+                    <div class="cart-img" style="width: 180px;">
                         <a href="product.php?id=12">
                             <img src="<?php echo htmlspecialchars($row['product_image']); ?>" alt="Product Image">
                         </a>
                     </div>
                     <div class="cart-info">
-                        <p class="product_name"><?php echo htmlspecialchars($row['product_name']); ?></p>
+                        <p style="font-size: 20px; font-weight: bold;" class="product_name"><?php echo htmlspecialchars($row['product_name']); ?></p>
                         
                         <p class="product_category"><?php echo htmlspecialchars($row['product_type']); ?></p>
-                        <p class="price">₹<?php echo htmlspecialchars($row['product_price']); ?></p>
+                        <p style="font-size: 17px; font-weight: bold;" class="price">₹<?php echo htmlspecialchars($row['product_price']); ?></p>
                     </div>
                 </div>
+                <?php $total_sum += $row['product_price']; ?>
             <?php endwhile; ?>
         <?php else: ?>
             <h1>No products found.</h1>
         <?php endif; ?>
     </div>
-
-    <!-- Right: Total Bill Summary -->
-    <div class="total-bill">
-        <h2>Order Summary</h2>
-        <p>Total Items: <strong><?php echo $all_product->num_rows; ?></strong></p>
-        <p>Subtotal: <strong>₹<?php echo $_SESSION['total_sum']; ?></strong></p>
-        <p>Shipping: <strong>FREE</strong></p>
-        <hr>
-        <p><strong>Grand Total: ₹<?php echo $_SESSION['total_sum']; ?></strong></p>
-        <a href="https://rzp.io/rzp/358VclAz"><button class="checkout-btn">Pay Now</button></a>
     </div>
+
+    
 </div>
 
-
-<!-- Offcanvas Form -->
-<div id="offcanvas" class="offcanvas">
-    <div class="offcanvas-content">
-        <span class="close-btn" onclick="closeOffcanvas()">&times;</span>
-        <h2>Order Summary</h2>
-        
-        <div class="total-ill">
-        <p>Total Items: <strong>3</strong></p>
-        <p>Subtotal: <strong>₹4,999</strong></p>
-        <p>Shipping: <strong>FREE</strong></p>
-        <hr>
-        <p><strong>Grand Total: ₹4,999</strong></p><br>
-        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_PctAqc1LTJSbC9" async> </script> </form>
-    </div>
-        
-    </div>
-</div>
-
-
-<style>
-
-.offcanvas{
-    color: grey;
-    line-height: 35px;
-}
-
-.offcanvas-content{
-    width: 30%;
-}
-
-</style>
-
+<?php 
+  $_SESSION['total_sum']=$total_sum; 
+?>
 
 <!--footer-->
 <section class="footer">
@@ -207,30 +191,11 @@ $total_sum = 0;
           </div>
         </div>
       </div>
-    </section>
-
-
-
-
+</section>
 
 <?php
 // Close the database connection
 $conn->close();
 ?>
-
-
-<!-- offcanvas form script -->
-<script>
-    function openOffcanvas() {
-    document.getElementById("offcanvas").classList.add("active");
-}
-
-function closeOffcanvas() {
-    document.getElementById("offcanvas").classList.remove("active");
-}
-
-</script>
-
-
 </body>
 </html>

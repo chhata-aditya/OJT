@@ -77,7 +77,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <li><a href="#">About</a></li>
     </ul>
 
-    <a class="cta" href="#"><button>Contact</button></a>
+    <div class="icon-container cta">
+        <a href="profile.php"><i class="fa-solid fa-user fa-xl"></i></a>
+        <a href="wishlist.php"><i class="fa-solid fa-heart fa-xl"></i></a>
+        <a href="cart.php"><i class="fa-solid fa-cart-shopping fa-xl"></i></a>
+    </div>
 </header>
 
 <?php

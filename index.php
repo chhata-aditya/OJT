@@ -44,7 +44,7 @@
 <!--icons-->
     <div class="fa-container">
         <a href="<?php echo isset($_COOKIE['token']) ? 'profile.php' : 'login.php'; ?>"><i class="fa-solid fa-user" style="color: #ffffff;"></i></a>
-        <a href="#"><i class="fa-solid fa-heart" style="color: #ffffff;"></i></a>
+        <a href="<?php echo isset($_COOKIE['token']) ? 'wishlist.php' : 'login.php'; ?>"><i class="fa-solid fa-heart" style="color: #ffffff;"></i></a>
         <a href="<?php echo isset($_COOKIE['token']) ? 'cart.php' : 'login.php'; ?>"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></a>
     </div>
 
