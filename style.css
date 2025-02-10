@@ -230,6 +230,16 @@ a {
   }
 }
 
+.col1{
+  padding-left: 17em;
+  align-items: center;
+}
+
+.col2{
+  padding-right: 17em;
+  align-items: center;
+}
+
 
 /*  FOOTER    */
 

@@ -126,60 +126,73 @@ $addressSaved = isset($_SESSION['address']);
 <div class="cart-wrapper">
     <!-- Left: Cart Items -->
     <div class="cart-container">
-
+    
 <!-- print address, if any -->
-<div class="address-box border-box"  style="display: <?php echo $addressSaved ? '' : 'none'; ?>"   >
 <?php
 if (isset($_SESSION['address']) && is_array($_SESSION['address'])) {
     $address = $_SESSION['address'];
-    echo "<p>{$address['Fname']} {$address['Lname']}, {$address['houseno']}, {$address['street']}, {$address['landmark']}, {$address['city']}, {$address['postal']}</p>";
+    echo "<p>Delivery To:</p>"; // This is outside the address box but still conditionally displayed
+    echo "
+    <div class='address-box border-box'>
+        <p>{$address['Fname']} {$address['Lname']}, {$address['houseno']}, {$address['street']}, {$address['landmark']}, {$address['city']}, {$address['postal']}</p>
+        
+    </div><br>";
 }
 ?>
-</div>
+
 
 <!-- show all cart items -->
+<p>Cart Items:</p>
 <div class="cart-box border-box">
-        <?php if ($all_product->num_rows > 0): ?>
-            <?php while ($row = $all_product->fetch_assoc()): ?>
-                <div class="cart-item">
-                    <div class="cart-img">
-                        <a href="product.php?id=12">
-                            <img src="<?php echo htmlspecialchars($row['product_image']); ?>" alt="Product Image">
-                        </a>
-                    </div>
-                    <div class="cart-info">
-                        <p class="product_name"><?php echo htmlspecialchars($row['product_name']); ?></p>
+  <?php if ($all_product->num_rows > 0): ?>
+    <?php while ($row = $all_product->fetch_assoc()): ?>
+    <div class="cart-item">
+      <div class="cart-img">
+        <a href="product.php?id=12">
+          <img src="<?php echo htmlspecialchars($row['product_image']); ?>" alt="Product Image">
+        </a>
+      </div>
+    <div class="cart-info">
+      <p class="product_name"><?php echo htmlspecialchars($row['product_name']); ?></p>
                         
-                        <p class="product_category"><?php echo htmlspecialchars($row['product_type']); ?></p>
-                        <p class="price">₹<?php echo htmlspecialchars($row['product_price']); ?></p>
+      <p class="product_category"><?php echo htmlspecialchars($row['product_type']); ?></p>
+      <p class="price">₹<?php echo htmlspecialchars($row['product_price']); ?></p>
+    </div>
 
-                        <form style="display: flex;justify-items:right" action="cart.php" method="GET">
+<!-- delete item from cart button -->
+<div class="right-btn-dlt">
+  <form style="display: flex;align-items:start;" action="cart.php" method="GET">
     <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
-    <button type="submit" name="delete" style="background: none; padding:0;margin-top:5px;" onclick="return confirm('Are you sure you want to remove this item?');">
-        <i class="fa-solid fa-trash" style=" cursor: pointer;"></i>
+    <button type="submit" name="delete" style="background: none; padding:0;margin-top:-40px;" onclick="return confirm('Are you sure you want to remove this item?');">
+        <i class="fa-solid fa-trash fa-lg" style=" cursor: pointer; color: #58595B;"></i>
     </button>
 </form>
+  </div>
 
-
-                    </div>
-                </div>
-                <?php $total_sum += $row['product_price']; ?>
-            <?php endwhile; ?>
-        <?php else: ?>
-            <h1>No products found.</h1>
-        <?php endif; ?>
     </div>
-    </div>
+      <?php $total_sum += $row['product_price']; ?>
+      <?php endwhile; ?>
+      <?php else: ?>
+        <h1>No products found.</h1>
+      <?php endif; ?>
+  </div>
+  </div>
 
     <!-- Right: Total Bill Summary -->
     <div class="total-bill">
-        <h2>Order Summary</h2>
+        <h2>Cart Summary</h2>
         <p>Total Items: <strong><?php echo $all_product->num_rows; ?></strong></p>
         <p>Subtotal: <strong>₹<?php echo $total_sum; ?></strong></p>
         <p>Shipping: <strong>FREE</strong></p>
         <hr>
         <p><strong>Grand Total: ₹<?php echo $total_sum; ?></strong></p>
-        <a href="<?php echo $addressSaved ? 'checkout.php' : 'delivery-address.php'; ?>"><button class="checkout-btn">Place Order</button></a>
+        
+
+        <form action="place-order.php" method="POST">
+        <a href="<?php echo $addressSaved ? 'checkout.php' : 'delivery-address.php'; ?>">
+          <button type="submit" name="place_order" class="checkout-btn">Place Order</button>
+        </a>
+</form>
     </div>
 </div>
 

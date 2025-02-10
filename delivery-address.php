@@ -125,7 +125,7 @@ $total_sum = 0;
 
     <!-- Right: Total Bill Summary -->
     <div class="total-bill">
-    <h2>Order Summary</h2>
+    <h2>Cart Summary</h2>
         <p>Total Items: <strong><?php echo $all_product->num_rows; ?></strong></p>
         <p>Subtotal: <strong>₹<?php echo $_SESSION['total_sum']; ?></strong></p>
         <p>Shipping: <strong>FREE</strong></p>

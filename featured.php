@@ -59,6 +59,11 @@
         </div>
     </div>-->
 
+<!-- full width banner image -->
+<div class="banner-container">
+    <img src="images/banner3.png" alt="" style="width:100%; height:auto;">
+</div>
+
 
 <div class="banner-section left-layout">
     <div class="image-container">
