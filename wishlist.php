@@ -34,9 +34,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   header("Location: cart.php");
   exit();
 }
+?>
 
+<?php
+//delete item from cart
+if (isset($_GET['delete'])) {
+  $user_id = $_SESSION['user_id']; // Get the user ID
+  $product_id = mysqli_real_escape_string($conn, $_GET['product_id']); // Sanitize product ID
+
+  // Delete the product from the cart for the specific user
+  $sql = "DELETE FROM wishlist WHERE user_id='$user_id' AND product_id='$product_id'";
+
+  if ($conn->query($sql) === TRUE) {
+      echo "<script>alert('Item removed from wishlist successfully!');</script>";
+  } else {
+      echo "<script>alert('Error deleting item: " . $conn->error . "');</script>";
+  }
+
+  // Refresh the page to update the cart
+  echo '<meta http-equiv="refresh" content="0;url=wishlist.php">';
+  exit();
+}
 
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -117,6 +138,17 @@ $addressSaved = isset($_SESSION['address']);
                         <p class="product_category"><?php echo htmlspecialchars($row['product_type']); ?></p>
                         <p style="font-size: 17px; font-weight: bold;" class="price">₹<?php echo htmlspecialchars($row['product_price']); ?></p>
                     </div>
+
+<!-- delete item from cart button -->
+<div class="right-btn-dlt">
+  <form style="display: flex;align-items:start;" action="wishlist.php" method="GET">
+    <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
+    <button type="submit" name="delete" style="background: none; padding:0;margin-top:-40px;" onclick="return confirm('Are you sure you want to remove this item?');">
+        <i class="fa-solid fa-trash fa-lg" style=" cursor: pointer; color: #58595B;"></i>
+    </button>
+</form>
+  </div>
+
                 </div>
                 <?php $total_sum += $row['product_price']; ?>
             <?php endwhile; ?>
