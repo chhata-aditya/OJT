@@ -135,8 +135,8 @@ $all_product = $stmt->get_result();
               <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($row['product_id']); ?>">
               <button class="add-btn" type="submit"><i class="fa-solid fa-cart-shopping"></i>  ADD TO CART</button>
             </form>
-            <form class="cart-btn-form" action="add-to-cart.php" method="POST">
-              <input type="hidden" name="product_id" value="1">
+            <form class="cart-btn-form" action="add-to-wishlist.php" method="POST">
+              <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($row['product_id']); ?>">
               <button class="add-btn wishlist" type="submit"><i class="fa-regular fa-heart"></i>  ADD TO WISHLIST</button>
             </form>
         </div><br>

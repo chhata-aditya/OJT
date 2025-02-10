@@ -3,6 +3,27 @@
     include("validation.php");
 ?>
 
+<?php
+
+if(isset($_POST['save'])) {
+    $email = $_SESSION['user_email']; // Email remains unchanged
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $dob = mysqli_real_escape_string($conn, $_POST['dob']);
+    $phone = mysqli_real_escape_string($conn, $_POST['phone']);
+
+    // Update user details in the database
+    $sql = "UPDATE users SET user_name='$name', user_dob='$dob', user_phone='$phone' WHERE user_email='$email'";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "<script>alert('Profile updated successfully!');</script>";
+        $_SESSION['user_name'] = $name;
+        $_SESSION['user_dob'] = $dob;
+        $_SESSION['user_phone'] = $phone;
+    } else {
+        echo "<script>alert('Error updating profile: " . $conn->error . "');</script>";
+    }
+}
+?>
 
 
 
@@ -47,7 +68,7 @@
     <ul class="nav__links">
         <li><a href="collections.php">Collections</a></li>
         <li><a href="featured.php">Featured</a></li>
-        <li><a class="active" href="product-listing.php">Products</a></li>
+        <li><a href="product-listing.php">Products</a></li>
         <li><a href="aout.php">About Us</a></li>
         <li><a href="index.php">Home</a></li>
     </ul>
@@ -63,47 +84,47 @@
 <!-- profile box -->
  <div class="profile-box">
     <p class="heading">PROFILE INFORMATION</p>
-    <div class="profile">
-      <label class="text" for="email">Email ID</label><br>
-      <input type="text" value="<?php echo $_SESSION['user_email']; ?>" readonly>
-      <br><br>
-      <hr>
-      <p class="heading">General Information</p>
-      <br>
-      <div class="half-input">
-        <div class="col-md-12">
-          <label class="text" for="name">Full Name</label>
-          <input type="text" value="<?php echo $_SESSION['user_name']; ?>" readonly>
+    
+    <form method="POST" action="profile.php">
+        <div class="profile">
+            <label class="text" for="email">Email ID</label><br>
+            <input type="text" name="email" value="<?php echo $_SESSION['user_email']; ?>" readonly>
+            <br><br>
+            <hr>
+            <p class="heading">General Information</p>
+            <br>
+            <div class="half-input">
+                <div class="col-md-12">
+                    <label class="text" for="name">Full Name</label>
+                    <input type="text" name="name" value="<?php echo $_SESSION['user_name']; ?>">
+                </div>
+            </div>
+            <br>
+            <div class="half-input">
+                <div class="col-md-4">
+                    <label class="text" for="DOB">Date Of Birth</label>
+                    <input type="date" name="dob" value="<?php echo isset($_SESSION['user_dob']) ? $_SESSION['user_dob'] : ''; ?>">
+                </div>
+                <div class="col-md-4">
+                    <label class="text" for="phone_no">Phone Number</label>
+                    <input type="tel" name="phone" placeholder="Enter your phone number" value="<?php echo isset($_SESSION['user_phone']) ? $_SESSION['user_phone'] : ''; ?>" required>
+                </div>
+            </div>
+            <br><br>
         </div>
-      </div>
-      <br>
-      <div class="half-input">
-        <div class="col-md-4">
-          <label class="text" for="DOB">First Name</label>
-          <input type="date">
+        <br>
+
+        <div class="profile-btn">
+            <div class="profile-save">
+                <button type="submit" name="save">SAVE</button>
+            </div>
+            <div class="profile-logout">
+                <a href="logout.php"><button type="button">LOGOUT</button></a>
+            </div>
         </div>
-        <div class="col-md-4">
-          <label class="text" for="phone_no">Last Name</label>
-          <input type="tel" name="phone" placeholder="Enter your phone number" pattern="[0-9]{10}" required>
-        </div>
-      </div>
+    </form>
+</div>
 
-      <br><br>
-
-    </div>
-
-  <br>
-
-    <div class="profile-btn">
-    <div class="profile-save">
-      <button>SAVE</button>
-    </div>
-    <div class="profile-logout">
-      <a href="logout.php"><button>LOGOUT</button></a>
-    </div>
-    </div>
-
- </div>
 
 
 

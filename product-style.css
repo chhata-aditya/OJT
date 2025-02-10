@@ -77,9 +77,6 @@ button {
 	transition: all 0.3s ease 0s;
 }
 
-button:hover {
-	background-color: rgba(0, 136, 169, 0.8);
-}
 
 .logo {
 	font-size: 20px;
@@ -508,10 +505,3 @@ input[type="range"]:hover {
     background: linear-gradient(to right, #8c7548 0%, #ddd 100%); /* Active track color */
 }
 
-
-
-
-
-.btn-and-text{
-    
-}

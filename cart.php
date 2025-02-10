@@ -38,6 +38,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 ?>
 
+
+<?php
+
+//delete item from cart
+if (isset($_GET['delete'])) {
+  $user_id = $_SESSION['user_id']; // Get the user ID
+  $product_id = mysqli_real_escape_string($conn, $_GET['product_id']); // Sanitize product ID
+
+  // Delete the product from the cart for the specific user
+  $sql = "DELETE FROM cart WHERE user_id='$user_id' AND product_id='$product_id'";
+
+  if ($conn->query($sql) === TRUE) {
+      echo "<script>alert('Item removed from cart successfully!');</script>";
+  } else {
+      echo "<script>alert('Error deleting item: " . $conn->error . "');</script>";
+  }
+
+  // Refresh the page to update the cart
+  echo '<meta http-equiv="refresh" content="0;url=cart.php">';
+  exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -128,6 +152,15 @@ if (isset($_SESSION['address']) && is_array($_SESSION['address'])) {
                         
                         <p class="product_category"><?php echo htmlspecialchars($row['product_type']); ?></p>
                         <p class="price">₹<?php echo htmlspecialchars($row['product_price']); ?></p>
+
+                        <form style="display: flex;justify-items:right" action="cart.php" method="GET">
+    <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
+    <button type="submit" name="delete" style="background: none; padding:0;margin-top:5px;" onclick="return confirm('Are you sure you want to remove this item?');">
+        <i class="fa-solid fa-trash" style=" cursor: pointer;"></i>
+    </button>
+</form>
+
+
                     </div>
                 </div>
                 <?php $total_sum += $row['product_price']; ?>

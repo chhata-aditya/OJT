@@ -3,13 +3,13 @@
     include("connection.php");
     include("validation.php");
 
-    // Fetch all items from the cart
+    // Fetch all items from the wishlist
     $sql = "SELECT 
-    cart.product_id,
+    wishlist.product_id,
     product.*
-    FROM cart 
-    LEFT JOIN product ON cart.product_id = product.product_id
-    WHERE cart.user_id = $_SESSION[user_id];";
+    FROM wishlist 
+    LEFT JOIN product ON wishlist.product_id = product.product_id
+    WHERE wishlist.user_id = $_SESSION[user_id];";
     ;
 
     $all_product = $conn->query($sql);

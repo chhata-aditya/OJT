@@ -131,7 +131,10 @@ $total_sum = 0;
         <p>Shipping: <strong>FREE</strong></p>
         <hr>
         <p><strong>Grand Total: ₹<?php echo $_SESSION['total_sum']; ?></strong></p>
-        <a href="delivery-address.php"><button class="checkout-btn">Place Order</button></a>
+        <form action="place-order.php" method="POST">
+    <button type="submit" name="place_order" class="checkout-btn">Place Order</button>
+</form>
+
     </div>
 </div>
 

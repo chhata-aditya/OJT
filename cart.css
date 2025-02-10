@@ -261,7 +261,10 @@ hr {
 
 
 
+
 /* PROFILE PAGE */
+
+
 .profile-box{
     margin: 0 auto;
     width: 70%;
@@ -294,7 +297,7 @@ hr {
     padding: 10px;
     width: 100%;
     border-radius: 5px;
-    color: #797878;
+    color: #0e0e0e;
     border: 1px solid #ccc;
 }
 
