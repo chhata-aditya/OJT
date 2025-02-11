@@ -17,11 +17,7 @@ cart.user_id = $_SESSION[user_id];"
 $all_product=$conn->query($sql);
 
 $total_sum = 0;
-
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html>
@@ -53,7 +49,6 @@ $total_sum = 0;
 
 
 <!-- header / navbar -->
-
 <header>
 <a href="index.php"><p class="logo">Bellelise</p></a>
     <input type="checkbox" id="click">
@@ -76,8 +71,6 @@ $total_sum = 0;
     </div>
 </header>
 
-
-
 <!-- cart ordering links -->
 <div class="order-links">
 <a href="cart.php" class="active">My Bag</a>
@@ -86,8 +79,6 @@ $total_sum = 0;
 <p> ----- </p>
 <a href="checkout.php">Payment</a>
 </div>
-
-
 
 <!-- Featured Section -->
 <div class="cart-wrapper">
@@ -100,8 +91,7 @@ $total_sum = 0;
         </div>
     </div>
 
-
-    <!-- Offcanvas Form -->
+<!-- Offcanvas Form -->
 <div id="offcanvas" class="offcanvas">
     <div class="offcanvas-content">
         <span class="close-btn" onclick="closeOffcanvas()">&times;</span>
@@ -122,9 +112,7 @@ $total_sum = 0;
     </div>
 </div>
 
-
-
-    <!-- Right: Total Bill Summary -->
+<!-- Right: Total Bill Summary -->
     <div class="total-bill">
     <h2>Cart Summary</h2>
         <p>Total Items: <strong><?php echo $all_product->num_rows; ?></strong></p>
@@ -138,12 +126,6 @@ $total_sum = 0;
 
     </div>
 </div>
-
-
-
-
-
-
 
 <!--footer-->
 <section class="footer">
@@ -201,10 +183,6 @@ $total_sum = 0;
       </div>
     </section>
 
-
-
-
-
 <?php
 // Close the database connection
 $conn->close();
@@ -219,9 +197,7 @@ $conn->close();
 function closeOffcanvas() {
     document.getElementById("offcanvas").classList.remove("active");
 }
-
 </script>
-
 
 </body>
 </html>

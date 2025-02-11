@@ -2,7 +2,6 @@
     include("connection.php");
     include("validation.php");
 ?>
-
 <?php
 
 if(isset($_POST['save'])) {
@@ -24,9 +23,6 @@ if(isset($_POST['save'])) {
     }
 }
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html>
@@ -56,9 +52,7 @@ if(isset($_POST['save'])) {
 </head>
 <body class="home-page">
 
-
 <!-- header / navbar -->
-
 <header>
 <a href="index.php"><p class="logo">Bellelise</p></a>
     <input type="checkbox" id="click">
@@ -80,7 +74,6 @@ if(isset($_POST['save'])) {
         <a href="cart.php"><i class="fa-solid fa-cart-shopping fa-xl"></i></a>
     </div>
 </header>
-
 
 <!-- profile box -->
  <div class="profile-box">
@@ -125,10 +118,6 @@ if(isset($_POST['save'])) {
         </div>
     </form>
 </div>
-
-
-
-
 
 <!--footer-->
 <section class="footer">
@@ -186,17 +175,10 @@ if(isset($_POST['save'])) {
       </div>
     </section>
 
-
-
-
-
 <?php
 // Close the database connection
 $conn->close();
 ?>
-
-
-
 
 </body>
 </html>

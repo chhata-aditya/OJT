@@ -77,7 +77,6 @@ button {
 	transition: all 0.3s ease 0s;
 }
 
-
 .logo {
 	font-size: 20px;
 	font-weight: 600;
@@ -159,8 +158,6 @@ button {
     transition: transform 0.1s ease;
 }
 
-
-
 /*featured sections*/
 
 .f-section .f-card{
@@ -171,24 +168,27 @@ button {
     margin-bottom: 3em;
 }
 
-
-
-
 /* featured image */
-
-
 
 .banner-section {
     display: flex; /* Align items in a row */
     align-items: center; /* Vertically align items */
     gap: 20px; /* Space between the image and text */
-    margin: 150px 10%; /* Add margin to position the section */
+    margin: 100px 12%; /* Positioning */
+}
+
+/* Center align text elements inside the container */
+.text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1; /* Allow text to take up remaining space */
 }
 
 .image-container {
     position: relative;
     display: inline-block;
-    flex-shrink: 0; /* Prevent the image from shrinking */
 }
 
 .image-container::before {
@@ -205,29 +205,42 @@ button {
 
 .image-container img {
     display: block;
-    width: 100%; /* Fit to the container's width */
-    height: auto; /* Maintain the aspect ratio */
-    max-width:500px; /* Limit the maximum width of the image */
+    width: 400px; /* Fit to the container's width */
+    height: 400px; /* Maintain the aspect ratio */
+    max-width:400px; /* Limit the maximum width of the image */
     max-height: auto; /* Limit the maximum height of the image */
     position: relative; /* Required for stacking context */
     z-index: 1; /* Place the image below the pseudo-element */
     object-fit: cover; /* Ensures the image fits within the defined bounds */
 }
 
-
 .banner-text {
     color: #333; /* Text color */
-    flex: 1; /* Allow text to take up remaining space */
-    position: relative;
-    left: 200px;
-}
-.right-layout .banner-text{
-    left: 80px;
+    margin-bottom: 10px; /* Space between heading and paragraph */
 }
 
+.text-container p {
+    margin-bottom: 15px; /* Space between paragraph and button */
+}
 
+.text-container a button {
+    color: white;
+    background: #c6ad8a;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px; /* Ensures fully rounded corners */
+    display: inline-block;
+    text-align: center;
+    font-size: 16px;
+    outline: none;
+    box-shadow: none;
+}
 
-
+/* Ensure there's no unwanted background */
+.text-container a {
+    display: inline-block;
+}
 
 
 /*product cards*/
@@ -284,8 +297,6 @@ main .caption .product_category{
 main .card a{
     width: 50%;
 }
-
-
 
 /*  SIDEBAR    */
 
@@ -387,7 +398,6 @@ main .card a{
     display: flex;
     justify-content: space-evenly;
 }
-
 
 /* Price Range Section */
 .sidebar-section {
@@ -502,4 +512,3 @@ input[type="range"]::-webkit-slider-thumb:hover {
 input[type="range"]:hover {
     background: linear-gradient(to right, #8c7548 0%, #ddd 100%); /* Active track color */
 }
-

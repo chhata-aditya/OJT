@@ -2,8 +2,6 @@
 @import url(product-style.css);
 @import url(product.css);
 
-
-
 .cart-container {
     width: 90%;
     margin: 0 auto;
@@ -49,12 +47,7 @@ hr {
     border: 0.5px solid #ccc;
 }
 
-
-
-
-
-
-
+/* order links */
 .order-links{
     display: flex;
     justify-content: center;
@@ -76,15 +69,11 @@ hr {
     padding: 0 10px;
 }
 
-
-   
-
-
+/* ------- */
 .border-box{
     border: 1px solid #eee;
     padding: 20px;
 }
-
 
 .cart-wrapper {
     width: 80%;
@@ -180,9 +169,6 @@ hr {
     background-color: #a78d6a;
 }
 
-
-
-
 /* DELIVERY ADDRESS */
 
 .address{
@@ -258,9 +244,6 @@ hr {
     visibility: visible;
     opacity: 1;
 }
-
-
-
 
 /* PROFILE PAGE */
 

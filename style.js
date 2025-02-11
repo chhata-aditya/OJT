@@ -1,5 +1,4 @@
-class StickyNavigation {
-	
+class StickyNavigation {	
 	constructor() {
 		this.currentId = null;
 		this.currentTab = null;
@@ -71,13 +70,4 @@ class StickyNavigation {
 	}
 	
 }
-
 new StickyNavigation();
-
-
-
-
-
-
-
-

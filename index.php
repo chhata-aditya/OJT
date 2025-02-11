@@ -32,22 +32,12 @@
     <!-- Hero -->
     <section class="et-hero-tabs">
 
-<!--menu
-    <div class="menu">
-      this is a menu
-      <ul>
-        <li>a1</li>
-        <li>a2</li>
-      </ul>
-    </div>-->
-      
 <!--icons-->
     <div class="fa-container">
         <a href="<?php echo isset($_COOKIE['token']) ? 'profile.php' : 'login.php'; ?>"><i class="fa-solid fa-user" style="color: #ffffff;"></i></a>
         <a href="<?php echo isset($_COOKIE['token']) ? 'wishlist.php' : 'login.php'; ?>"><i class="fa-solid fa-heart" style="color: #ffffff;"></i></a>
         <a href="<?php echo isset($_COOKIE['token']) ? 'cart.php' : 'login.php'; ?>"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></a>
     </div>
-
 
     <h1>BELLELISE & CO.</h1>
     <h3>Where Elegance Meets Eternity</h3>
@@ -69,7 +59,6 @@
       <p>Timeless elegance, curated for you.</p>
       <a href="collections.php"><button><h3>View Collections</h3></button></a>
 </div>
-
     </section>
 
     <section class="et-slide col2" id="tab-flexbox">
@@ -99,10 +88,6 @@
     <a href="review.php"><button><h3>Click to write review</h3></button></a>
     </section>
   </main>
-
-
-
-  
 
 </body>
 </html>

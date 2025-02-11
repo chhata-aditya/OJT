@@ -1,5 +1,4 @@
 <?php
-
     include("connection.php");
     include("validation.php");
 
@@ -17,7 +16,6 @@
     if (!$all_product) {
       die("Query failed: " . $conn->error);
   }
-
     $total_sum = 0;
 
   // Save the address from the form
@@ -54,10 +52,7 @@ if (isset($_GET['delete'])) {
   // Refresh the page to update the cart
   echo '<meta http-equiv="refresh" content="0;url=wishlist.php">';
   exit();
-}
-
-?>
-
+}?>
 
 <!DOCTYPE html>
 <html>
@@ -121,8 +116,6 @@ $addressSaved = isset($_SESSION['address']);
     <!-- Left: Cart Items -->
     <div class="cart-container">
 
-
-
 <!-- show all cart items -->
 <div class="cart-box border-box">
         <?php if ($all_product->num_rows > 0): ?>
@@ -149,7 +142,6 @@ $addressSaved = isset($_SESSION['address']);
     </button>
 </form>
   </div>
-
                 </div>
                 <?php $total_sum += $row['product_price']; ?>
             <?php endwhile; ?>
@@ -157,9 +149,7 @@ $addressSaved = isset($_SESSION['address']);
             <h1>No products found.</h1>
         <?php endif; ?>
     </div>
-    </div>
-
-    
+    </div>    
 </div>
 
 <?php 

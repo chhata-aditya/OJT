@@ -21,9 +21,6 @@ $order_id = 0;
 $product_id = 0;
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,7 +69,6 @@ $product_id = 0;
     </div>
 </header>
 
-
 <!-- cart ordering links -->
 <div class="order-links">
 <a href="cart.php" class="active">My Bag</a>
@@ -81,8 +77,6 @@ $product_id = 0;
 <p class="active"> ----- </p>
 <a href="checkout.php" class="active">Payment</a>
 </div>
-
-
 
 <!-- Featured Section -->
 <div class="cart-wrapper">
@@ -133,7 +127,6 @@ $product_id = 0;
     </div>
 </div>
 
-
 <!-- Offcanvas Form -->
 <div id="offcanvas" class="offcanvas">
     <div class="offcanvas-content">
@@ -154,18 +147,14 @@ $product_id = 0;
 </div>
 
 <style>
-
 .offcanvas{
     color: grey;
     line-height: 35px;
 }
-
 .offcanvas-content{
     width: 30%;
 }
-
 </style>
-
 
 <!--footer-->
 <section class="footer">
@@ -223,15 +212,10 @@ $product_id = 0;
       </div>
     </section>
 
-
-
-
-
 <?php
 // Close the database connection
 $conn->close();
 ?>
-
 
 <script>
 document.getElementById("pay-now").addEventListener("click", function () {
@@ -255,8 +239,6 @@ document.getElementById("pay-now").addEventListener("click", function () {
     }, 3000);
 });
 </script>
-
-
 <!-- offcanvas form script -->
 <script>
     function openOffcanvas() {
@@ -266,9 +248,7 @@ document.getElementById("pay-now").addEventListener("click", function () {
 function closeOffcanvas() {
     document.getElementById("offcanvas").classList.remove("active");
 }
-
 </script>
-
 
 </body>
 </html>

@@ -159,8 +159,6 @@ a {
   }
 }
 
-
-
 /* INDIVIDUAL SECTIONS */
 .et-slide button {
   background-color: #000;
@@ -240,29 +238,6 @@ a {
   right: 0%;
 }
 
-/* .et-main .col3{
-  background: url("images/banner2-home.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center 65%;
-  color: white;
-}
-
-.et-main .col3::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); 
-  z-index: 0;
-}
-
-.et-main .col3 h1{
-  z-index: 10;
-} */
-
 /* Responsive adjustments */
 @media (max-width: 600px) {
   .et-main .col1 img{
@@ -280,9 +255,7 @@ a {
   align-items: center;
 }
 
-
 /*  FOOTER    */
-
 
 .footer-text1,.footer-text2{
   padding: 10px 0;

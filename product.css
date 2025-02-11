@@ -113,7 +113,6 @@ body{
     align-items: center;
 }
 
-
 /* accordian */
 
 .accordion {
@@ -155,6 +154,4 @@ body{
     border-top: 1px solid #ccc;
     line-height: 1.5; /* For better text spacing */
     white-space: normal; /* Prevent text stacking in one line */
-}
-
-  
+}  

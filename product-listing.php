@@ -40,9 +40,6 @@ $stmt->execute();
 $all_product = $stmt->get_result();
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,17 +92,13 @@ $all_product = $stmt->get_result();
     </div>
 </header>
 
-
 <!-- full width banner image -->
 <div class="banner-container">
     <img src="images/banner_new.png" alt="" style="width:100%; height:auto;">
 </div>
 
 <!-- Sidebar -->
-
 <div class="main-container">
-
-
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar content here -->
@@ -131,7 +124,7 @@ $all_product = $stmt->get_result();
             name="max_price" 
             min="0" 
             max="5000" 
-            step="30" 
+            step="20" 
             value="<?php echo isset($_GET['max_price']) ? htmlspecialchars($_GET['max_price']) : '5000'; ?>" 
             oninput="updatePriceValue(this.value)">
         
@@ -172,9 +165,7 @@ $all_product = $stmt->get_result();
     </div>
 </div>
 
-
 <!-- Featured Section -->
-
 <div class="content">
     <main>
         <?php

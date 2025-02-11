@@ -1,5 +1,4 @@
 <?php
-
     include("connection.php");
     include("validation.php");
 
@@ -17,7 +16,6 @@
     if (!$all_product) {
       die("Query failed: " . $conn->error);
   }
-
     $total_sum = 0;
 
   // Save the address from the form
@@ -33,14 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   ];
   header("Location: cart.php");
   exit();
-}
-
-
-?>
-
+} ?>
 
 <?php
-
 //delete item from cart
 if (isset($_GET['delete'])) {
   $user_id = $_SESSION['user_id']; // Get the user ID
@@ -58,9 +51,7 @@ if (isset($_GET['delete'])) {
   // Refresh the page to update the cart
   echo '<meta http-equiv="refresh" content="0;url=cart.php">';
   exit();
-}
-
-?>
+} ?>
 
 <!DOCTYPE html>
 <html>
@@ -140,7 +131,6 @@ if (isset($_SESSION['address']) && is_array($_SESSION['address'])) {
     </div><br>";
 }
 ?>
-
 
 <!-- show all cart items -->
 <p>Cart Items:</p>

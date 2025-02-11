@@ -47,9 +47,6 @@ $stmt->execute();
 $all_product = $stmt->get_result();
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -101,19 +98,12 @@ $all_product = $stmt->get_result();
     </div>
 </header>
 
-
-<!-- full width image -->
-
-
-
-
 <!-- Featured Section -->
 <div class="container">
 <?php
         if ($all_product->num_rows > 0) {
             while ($row = $all_product->fetch_assoc()) {
                 ?>
-
     <div class="image">
     <img src="<?php echo htmlspecialchars($row['product_image']); ?>" alt="<?php echo htmlspecialchars($row['product_name']); ?>">
     </div>
@@ -142,7 +132,6 @@ $all_product = $stmt->get_result();
             </form>
         </div><br>
 
-
         <!-- share product option -->
          <p>Share
          <i class="fa-brands fa-instagram fa-lg"></i>
@@ -162,13 +151,6 @@ $all_product = $stmt->get_result();
             </div>
         </div><br><br>
 
-
-
-<!-- accordian -->
-
-
-
-
     <?php
             }
         } else {
@@ -177,11 +159,6 @@ $all_product = $stmt->get_result();
         ?>
 </div>
 </div>
-
-
-
-
-
 
 <!--footer-->
 <section class="footer">
@@ -239,21 +216,10 @@ $all_product = $stmt->get_result();
       </div>
     </section>
 
-
-
-
-
 <?php
 // Close the database connection
 $conn->close();
 ?>
-
-
-
-<!-- add to cart functionality -->
-
-
-
 
 </body>
 </html>

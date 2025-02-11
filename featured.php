@@ -45,37 +45,29 @@
     </div>
 		</header>
 
-<!--featured section
-    <div class="f-section">
-        <div class="f-card sec1">
-            <a href="product.php?type=titanic"><h1>Titanic Collection</h1></a>
-        </div>
-
-        <div class="f-card sec2">
-            <a href="product.php?type=rapunzel"><h1>Rapunzel Collection</h1></a>
-        </div>
-
-        <div class="f-card sec3">
-            <a href="product.php?type=bridgerton"><h1>Bridgerton Collection</h1></a>
-        </div>
-    </div>-->
-
 <!-- full width banner image -->
 <div class="banner-container">
     <img src="images/banner3.png" alt="" style="width:100%; height:auto;">
 </div>
 
-
+<!-- different featured collection cards -->
 <div class="banner-section left-layout">
     <div class="image-container">
         <img src="images/banner1.jpg" alt="Sample Image">
     </div>
-      <a href="product-listing.php?f_category=Titanic" style="background-color: #eeeeee;"><h1 class="banner-text">The Titanic Collection</h1></a>
-    <br>
+    <div class="text-container">
+        <h1 class="banner-text">The Titanic Collection</h1>
+        <p>Timeless romance, cast in gold and pearls.</p><br>
+        <a href="product-listing.php"><button><h4>View Collection</h4></button></a>
+    </div>
 </div>
 
 <div class="banner-section right-layout">
-    <h1 class="banner-text">The Rapunzel Collection</h1>
+    <div class="text-container">
+        <h1 class="banner-text">The Rapunzel Collection</h1>
+        <p>Whimsical charms for your fairy-tale moments.</p><br>
+        <a href="product-listing.php"><button><h4>View Collection</h4></button></a>
+    </div>
     <div class="image-container">
         <img src="images/banner2.jpg" alt="Sample Image">
     </div>
@@ -85,15 +77,16 @@
     <div class="image-container">
         <img src="images/banner3.jpg" alt="Sample Image">
     </div>
-    <h1 class="banner-text">The Bridgerton Collection</h1>
+    <div class="text-container">
+        <h1 class="banner-text">The Bridgerton Collection</h1>
+        <p>Regal elegance, fit for the modern duchess.</p><br>
+        <a href="product-listing.php"><button><h4>View Collection</h4></button></a>
+    </div>
 </div>
-
-
-
 
 <!--footer-->
 <section class="footer">
-      <div class="footer-row">
+  <div class="footer-row">
         <div class="footer-col">
           <h4>Info</h4>
           <ul class="links">

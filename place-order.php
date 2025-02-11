@@ -42,7 +42,6 @@ while ($row = $result->fetch_assoc()) {
     }
 }
 
-
 echo "<script>alert('Order placed successfully!'); window.location.href='checkout.php';</script>";
 exit();
 ?>
