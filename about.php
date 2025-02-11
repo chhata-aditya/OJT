@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us</title>
+  <title>Bellelise & Co. | About Us</title>
+  <link rel="icon" href="images/icon2.png">
 
   <!-- css link -->
    <link rel="stylesheet" href="about.css">

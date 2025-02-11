@@ -67,7 +67,8 @@ if (isset($_GET['delete'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Featured Products</title>
+    <title>Featured Products | Bellelise & Co.</title>
+    <link rel="icon" href="images/icon2.png">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
@@ -153,7 +154,7 @@ if (isset($_SESSION['address']) && is_array($_SESSION['address'])) {
         </a>
       </div>
     <div class="cart-info">
-      <p class="product_name"><?php echo htmlspecialchars($row['product_name']); ?></p>
+      <p class="product_name"><?php echo htmlspecialchars($row['product_name']);?></p>
                         
       <p class="product_category"><?php echo htmlspecialchars($row['product_type']); ?></p>
       <p class="price">₹<?php echo htmlspecialchars($row['product_price']); ?></p>
@@ -170,7 +171,12 @@ if (isset($_SESSION['address']) && is_array($_SESSION['address'])) {
   </div>
 
     </div>
-      <?php $total_sum += $row['product_price']; ?>
+      <?php $total_sum += $row['product_price'];
+            $product_id=$row['product_id'];
+            $product_name=$row['product_name'];
+            $product_id=$row['product_id'];
+            $product_id=$row['product_id'];
+            $product_id=$row['product_id']; ?>
       <?php endwhile; ?>
       <?php else: ?>
         <h1>No products found.</h1>
@@ -197,6 +203,9 @@ if (isset($_SESSION['address']) && is_array($_SESSION['address'])) {
 </div>
 
 <?php 
+  $_SESSION['total_sum']=$total_sum; 
+  $_SESSION['product_id']=$product_id; 
+  $_SESSION['product_name']=$product_name; 
   $_SESSION['total_sum']=$total_sum; 
 ?>
 

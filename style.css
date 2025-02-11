@@ -19,7 +19,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
   position: relative;
   background: #eee;
   text-align: center;
@@ -179,6 +179,14 @@ a {
   cursor: pointer;
 }
 
+.et-slide{
+  line-height: 25px;
+}
+.et-slide p{
+  font-size: 18px;
+  font-weight: 500;
+}
+
 .et-main .col1 .left-img{
   position: absolute;
   display: block;
@@ -188,7 +196,6 @@ a {
   top: -35px;
   margin: 0;
 }
-
 .et-main .col2 .right-img{
   position: absolute;
   display: block;
@@ -198,8 +205,42 @@ a {
   top: 70px;
   margin: 0;
 }
+.et-main .col3 .left-img{
+  position: absolute;
+  display: block;
+  width: 25%;
+  height: auto;
+  left: 5%;
+  top: -30px;
+  margin: 0;
+}
+.et-main .col4 .left-img{
+  position: absolute;
+  display: block;
+  width: 30%;
+  height: auto;
+  left: 8%;
+  top: -90px;
+  margin: 0;
+}
+.et-main .col3 .right-img{
+  position: absolute;
+  display: block;
+  width: 32%;
+  height: auto;
+  right: 0%;
+  top: 130px;
+  margin: 0;
+}
+.et-main .col5 .right-img{
+  position: absolute;
+  display: block;
+  width: 28%;
+  height: auto;
+  right: 0%;
+}
 
-.et-main .col3{
+/* .et-main .col3{
   background: url("images/banner2-home.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -214,13 +255,13 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Adjust opacity for a darker/lighter effect */
+  background: rgba(0, 0, 0, 0.5); 
   z-index: 0;
 }
 
 .et-main .col3 h1{
   z-index: 10;
-}
+} */
 
 /* Responsive adjustments */
 @media (max-width: 600px) {
@@ -230,12 +271,11 @@ a {
   }
 }
 
-.col1{
+.col1,.col4{
   padding-left: 17em;
   align-items: center;
 }
-
-.col2{
+.col2,.col5{
   padding-right: 17em;
   align-items: center;
 }

@@ -64,7 +64,8 @@ if (isset($_GET['delete'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Featured Products</title>
+    <title>My Wishlist | Bellelise & Co.</title>
+    <link rel="icon" href="images/icon2.png">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">

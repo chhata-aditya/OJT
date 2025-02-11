@@ -1,15 +1,18 @@
 <?php
+session_start();
+include("connection.php");
 require('fpdf186/fpdf.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $order_id = $_POST['order_id']; // Dynamic Order ID
-    $customer_name = "John Doe"; // Fetch from DB
-    $amount = "999"; // Fetch from DB
+    $order_id = $_POST['product_id']; // Dynamic Order ID
+    $customer_name = $_POST['product_id']; // Fetch from DB
+    $amount = $_POST['total_sum'];
+    $product_name = $_POST['product_name']; // Fetch from DB
     $date = date("Y-m-d");
-    $company_name = "Your Jewelry Brand";
-    $company_address = "123, Luxury St, New York, USA";
+    $company_name = "Bellelise";
+    $company_address = "Bailey Road, Patna - 80001";
     $company_phone = "+1 234 567 890";
-    $company_email = "support@yourbrand.com";
+    $company_email = "support@bellelise.com";
 
     // Create PDF
     $pdf = new FPDF();
@@ -60,7 +63,7 @@ $pdf->Ln(5);
 
     // Sample Product Row
     $pdf->SetFont('Arial', '', 12);
-    $pdf->Cell(100, 10, "Gold Necklace", 1, 0, 'C');
+    $pdf->Cell(100, 10, $product_name , 1, 0, 'C');
     $pdf->Cell(30, 10, "1", 1, 0, 'C');
     $pdf->Cell(30, 10, "$" . $amount, 1, 0, 'C');
     $pdf->Cell(30, 10, "$" . $amount, 1, 1, 'C');

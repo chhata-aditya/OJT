@@ -48,7 +48,8 @@ $all_product = $stmt->get_result();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Featured Products</title>
+    <title>Products Listing | Bellelise & Co.</title>
+    <link rel="icon" href="images/icon2.png">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
@@ -58,7 +59,11 @@ $all_product = $stmt->get_result();
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/6105985899.js" crossorigin="anonymous"></script>
-    
+
+    <!-- swiper.js for carousel -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <!-- CSS -->
     <link rel="stylesheet" href="product-style.css">
     <script src="style.js"></script>
@@ -93,10 +98,8 @@ $all_product = $stmt->get_result();
 
 <!-- full width banner image -->
 <div class="banner-container">
-    <img src="images/banner.png" alt="" style="width:100%; height:auto;">
+    <img src="images/banner_new.png" alt="" style="width:100%; height:auto;">
 </div>
-
-
 
 <!-- Sidebar -->
 
@@ -117,7 +120,7 @@ $all_product = $stmt->get_result();
         </ul>
     </div> <br>
 
-    <!-- Price Range Filter -->
+<!-- Price Range Filter -->
 <div class="sidebar-section">
     <p>Price Range</p>
     <form method="GET" action="">
@@ -125,22 +128,38 @@ $all_product = $stmt->get_result();
         <input 
             type="range" 
             id="price-range" 
-            name="price_range" 
+            name="max_price" 
             min="0" 
-            max="1000" 
-            step="10" 
-            value="<?php echo htmlspecialchars($max_price); ?>" 
+            max="5000" 
+            step="30" 
+            value="<?php echo isset($_GET['max_price']) ? htmlspecialchars($_GET['max_price']) : '5000'; ?>" 
             oninput="updatePriceValue(this.value)">
         
         <div class="price-values">
             <span id="min-price">0</span>
             <span> - </span>
-            <span id="max-price-value">1000</span>
+            <span id="max-price-value">
+                <?php echo isset($_GET['max_price']) ? htmlspecialchars($_GET['max_price']) : '5000'; ?>
+            </span>
         </div>
 
         <button type="submit">Apply</button>
     </form>
-</div><br>
+</div>
+
+<!-- JavaScript to Update Displayed Price -->
+<script>
+    function updatePriceValue(value) {
+        document.getElementById("max-price-value").textContent = value;
+    }
+
+    // Ensure the displayed value matches the current slider position on page load
+    document.addEventListener("DOMContentLoaded", function() {
+        var priceRange = document.getElementById("price-range");
+        document.getElementById("max-price-value").textContent = priceRange.value;
+    });
+</script>
+<br>
 
     <!-- Material Filter -->
     <div class="sidebar-section">
@@ -172,7 +191,7 @@ $all_product = $stmt->get_result();
                         <p class="product_name"><?php echo htmlspecialchars($row['product_name']); ?></p>
                         <hr>
                         <p class="product_category"><?php echo htmlspecialchars($row['product_type']); ?></p>
-                        <p class="price">$<?php echo htmlspecialchars($row['product_price']); ?></p>
+                        <p class="price">₹<?php echo htmlspecialchars($row['product_price']); ?></p>
                     </div>
                 </div>
                 <?php

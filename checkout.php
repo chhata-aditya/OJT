@@ -16,8 +16,9 @@ cart.user_id = $_SESSION[user_id];"
 
 $all_product=$conn->query($sql);
 
-$total_sum = 0;
-
+$total_sum=$_SESSION['total_sum']; 
+$order_id = 0;
+$product_id = 0;
 ?>
 
 
@@ -28,7 +29,8 @@ $total_sum = 0;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Featured Products</title>
+    <title>Checkout | Bellelise & Co.</title>
+    <link rel="icon" href="images/icon2.png">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
@@ -101,6 +103,7 @@ $total_sum = 0;
                         <p class="price">₹<?php echo htmlspecialchars($row['product_price']); ?></p>
                     </div>
                 </div>
+                
             <?php endwhile; ?>
         <?php else: ?>
             <h1>No products found.</h1>
@@ -117,7 +120,10 @@ $total_sum = 0;
         <hr>
         <p><strong>Grand Total: ₹<?php echo $_SESSION['total_sum']; ?></strong></p>
         <form id="payment-form" action="generate_invoice.php" method="POST" style="display: inline;">
-          <input type="hidden" name="order_id" value="12345"> <!-- Dynamic Order ID -->
+          <input type="hidden" name="order_id" value="<?php echo $order_id; ?>"> <!-- Dynamic Order ID -->
+          <input type="hidden" name="product_id" value="<?php echo $_SESSION['product_id']; ?>">
+          <input type="hidden" name="product_name" value="<?php //echo $_SESSION['product_name']; ?>">
+          <input type="hidden" name="total_sum" value="<?php echo $total_sum; ?>">
           <button type="submit" style="text-decoration: underline;border: none;background: none; color: grey; padding: 0; font-size: 16px; cursor: pointer; border-radius: 5px;">
              Download Invoice
           </button>
