@@ -113,45 +113,55 @@ body{
     align-items: center;
 }
 
-/* accordian */
-
-.accordion {
-    all: unset;
-    width: 900px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    overflow: hidden;
-    margin-bottom: 20px; /* Add space between accordion items */
+.prod-desc-box{
+    border: 1px solid #d8d8d8;
+    padding: 20px;
+    line-height: 28px;
+    font-size: 15px;
 }
 
-.accordion-item {
-    margin-bottom: 2px; /* Space between items */
+/* image gallery */
+
+.product-image-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
     width: 100%;
 }
 
-.accordion-header {
-    all: unset;
-    background-color: #b69d7a;
-    color: white;
-    padding: 15px;
-    font-size: 16px;
-    border: none;
-    text-align: left;
+.main-image {
+    width: 100%;
+    max-width: 530px;
+    height: 530px; /* Fixed height to ensure uniform size */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures all images fit nicely without stretching */
+}
+
+.thumbnail-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.thumbnail {
+    width: 33%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    border-radius: 5px;
     cursor: pointer;
-    outline: none;
-    transition: background-color 0.3s ease;
+    transition: 0.3s;
 }
 
-.accordion-header:hover {
-    background-color: #0056b3;
+.thumbnail:hover {
+    border-color: #000;
 }
 
-.accordion-content {
-    all: unset;
-    padding: 15px;
-    background-color: #f9f9f9;
-    display: none; /* Initially hidden */
-    border-top: 1px solid #ccc;
-    line-height: 1.5; /* For better text spacing */
-    white-space: normal; /* Prevent text stacking in one line */
-}  

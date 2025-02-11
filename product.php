@@ -104,9 +104,26 @@ $all_product = $stmt->get_result();
         if ($all_product->num_rows > 0) {
             while ($row = $all_product->fetch_assoc()) {
                 ?>
-    <div class="image">
-    <img src="<?php echo htmlspecialchars($row['product_image']); ?>" alt="<?php echo htmlspecialchars($row['product_name']); ?>">
+
+
+
+
+    <div class="product-image-gallery">
+    <!-- Main Product Image -->
+    <div class="main-image">
+        <img id="main-product-image" src="<?php echo htmlspecialchars($row['product_image']); ?>" alt="<?php echo htmlspecialchars($row['product_name']); ?>">
     </div>
+    
+    <!-- Thumbnail Row -->
+    <div class="thumbnail-row">
+        <img class="thumbnail" src="<?php echo htmlspecialchars($row['product_image']); ?>" onclick="changeMainImage(this.src)">
+        <img class="thumbnail" src="<?php echo htmlspecialchars($row['image2']); ?>" onclick="changeMainImage(this.src)">
+    </div>
+</div>
+
+
+
+
 
     <div class="description">
         <h1 class="product_name"><?php echo htmlspecialchars($row['product_name']); ?></h1>
@@ -149,7 +166,23 @@ $all_product = $stmt->get_result();
             <div class="return-info-text">
             This product is eligible for return or exchange under our 30-day return or exchange policy. No questions asked.
             </div>
-        </div><br><br>
+        </div><br>
+  <p>Product Details</p>
+  <div class="prod-desc-box">
+    <h4>Material & Care<br></h4>
+    <p>High-quality 925 Sterling Silver with Ruby Red Crystal. Rhodium-plated for extra shine & durability.
+    Hypoallergenic & Tarnish-resistant.
+    Store in a dry place & avoid direct perfume/sweat contact.</p><br>
+    <h4>Country of Origin:<br></h4>
+    <p>India (Crafted with Love & Precision)</p><br>
+    <h4>Authenticity Note:<br></h4>
+    <p>Every piece is handcrafted with care and authenticity guaranteed when purchased from our official website or verified sellers.</p><br>
+    <h4>Manufactured & Sold By:<br></h4>
+    <p>Bellelise & Co.<br>
+Bailiey Road, Patna <br>
+India <br>
+📩 Support: support@Bellelise@gmail.com</p>
+  </div>
 
     <?php
             }
@@ -220,6 +253,12 @@ $all_product = $stmt->get_result();
 // Close the database connection
 $conn->close();
 ?>
+
+<script>
+  function changeMainImage(newSrc) {
+    document.getElementById("main-product-image").src = newSrc;
+}
+</script>
 
 </body>
 </html>
