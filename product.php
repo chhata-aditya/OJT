@@ -105,9 +105,6 @@ $all_product = $stmt->get_result();
             while ($row = $all_product->fetch_assoc()) {
                 ?>
 
-
-
-
     <div class="product-image-gallery">
     <!-- Main Product Image -->
     <div class="main-image">
@@ -120,10 +117,6 @@ $all_product = $stmt->get_result();
         <img class="thumbnail" src="<?php echo htmlspecialchars($row['image2']); ?>" onclick="changeMainImage(this.src)">
     </div>
 </div>
-
-
-
-
 
     <div class="description">
         <h1 class="product_name"><?php echo htmlspecialchars($row['product_name']); ?></h1>

@@ -97,7 +97,7 @@ $product_id = 0;
                         <p class="price">₹<?php echo htmlspecialchars($row['product_price']); ?></p>
                     </div>
                 </div>
-                
+                                
             <?php endwhile; ?>
         <?php else: ?>
             <h1>No products found.</h1>
@@ -115,8 +115,11 @@ $product_id = 0;
         <p><strong>Grand Total: ₹<?php echo $_SESSION['total_sum']; ?></strong></p>
         <form id="payment-form" action="generate_invoice.php" method="POST" style="display: inline;">
           <input type="hidden" name="order_id" value="<?php echo $order_id; ?>"> <!-- Dynamic Order ID -->
+
           <input type="hidden" name="product_id" value="<?php echo $_SESSION['product_id']; ?>">
-          <input type="hidden" name="product_name" value="<?php //echo $_SESSION['product_name']; ?>">
+          <input type="hidden" name="product_name" value="<?php echo $_SESSION['product_name']; ?>">
+
+          <input type="hidden" name="user_name" value="<?php echo $_SESSION['user_name']; ?>">
           <input type="hidden" name="total_sum" value="<?php echo $total_sum; ?>">
           <button type="submit" style="text-decoration: underline;border: none;background: none; color: grey; padding: 0; font-size: 16px; cursor: pointer; border-radius: 5px;">
              Download Invoice

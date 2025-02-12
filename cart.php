@@ -120,6 +120,7 @@ $addressSaved = isset($_SESSION['address']);
     <div class="cart-container">
     
 <!-- print address, if any -->
+<div style="display: <?php echo $addressSaved ? '' : 'none'; ?>">
 <?php
 if (isset($_SESSION['address']) && is_array($_SESSION['address'])) {
     $address = $_SESSION['address'];
@@ -131,6 +132,7 @@ if (isset($_SESSION['address']) && is_array($_SESSION['address'])) {
     </div><br>";
 }
 ?>
+</div>
 
 <!-- show all cart items -->
 <p>Cart Items:</p>

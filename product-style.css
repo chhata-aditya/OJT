@@ -265,7 +265,8 @@ main .card{
 }
 
 main .card .image{
-    height: 80%;
+    width: 300px;
+    height: 300px;
     margin-bottom: 1%;
 }
 
