@@ -115,6 +115,7 @@ if (isset($_GET['message'])) {
 }
 ?>
 
+
 <script>
   function openMessageForm() {
 	document.getElementById("messageForm").classList.add("active");
