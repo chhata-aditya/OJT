@@ -2,6 +2,7 @@
 // Include the database connection
 include("connection.php");
 
+
 // Add Product
 if (isset($_POST['add_product'])) {
     $product_name = $_POST['product_name'];
@@ -10,25 +11,29 @@ if (isset($_POST['add_product'])) {
     $f_category = $_POST['f_category'];
     $product_price = $_POST['product_price'];
 
-    // Image upload
+    // Handle image upload
     $product_image = $_FILES['product_image']['name'];
     $image2 = $_FILES['image2']['name'];
+
     $target1 = "uploads/" . basename($product_image);
     $target2 = "uploads/" . basename($image2);
 
+    // Move uploaded files
     if (move_uploaded_file($_FILES['product_image']['tmp_name'], $target1) && move_uploaded_file($_FILES['image2']['tmp_name'], $target2)) {
-        $sql = "INSERT INTO product (product_name, product_description, product_type, f_category, product_price, product_image, image2) VALUES ('$product_name', '$product_description', '$product_type', '$f_category', '$product_price', '$target1', '$target2')";
+        // Insert product into the database
+        $sql = "INSERT INTO product (product_name, product_description, product_type, f_category, product_price, product_image, image2) 
+                VALUES ('$product_name', '$product_description', '$product_type', '$f_category', '$product_price', '$target1', '$target2')";
+
         if ($conn->query($sql)) {
-            echo "<script>alert('Product Added Successfully');</script>";
+            echo "<script>alert('Product Added Successfully'); window.location.href='admin-product.php';</script>";
         } else {
             echo "<script>alert('Error: " . $conn->error . "');</script>";
         }
     } else {
-        echo "<script>alert('Failed to upload images');</script>";
+        echo "<script>alert('Failed to upload images.');</script>";
     }
-    echo '<meta http-equiv="refresh" content="0;url=admin-product.php">';
-    exit();
 }
+
 
 // Update Product
 if (isset($_POST['edit_product'])) {
@@ -39,27 +44,44 @@ if (isset($_POST['edit_product'])) {
     $f_category = $_POST['f_category'];
     $product_price = $_POST['product_price'];
 
-    // Image upload
+    // Handle optional image uploads
     $product_image = $_FILES['product_image']['name'];
     $image2 = $_FILES['image2']['name'];
-    
-    if (!empty($product_image) && !empty($image2)) {
+
+    $update_query = "UPDATE product SET 
+                        product_name='$product_name', 
+                        product_description='$product_description', 
+                        product_type='$product_type', 
+                        f_category='$f_category', 
+                        product_price='$product_price'";
+
+    // Check if new images are uploaded
+    if (!empty($product_image)) {
         $target1 = "uploads/" . basename($product_image);
-        $target2 = "uploads/" . basename($image2);
-        if (move_uploaded_file($_FILES['product_image']['tmp_name'], $target1) && move_uploaded_file($_FILES['image2']['tmp_name'], $target2)) {
-            $sql = "UPDATE product SET product_name='$product_name', product_description='$product_description', product_type='$product_type', f_category='$f_category', product_price='$product_price', product_image='$target1', image2='$target2' WHERE product_id='$product_id'";
+        if (move_uploaded_file($_FILES['product_image']['tmp_name'], $target1)) {
+            $update_query .= ", product_image='$target1'";
+        } else {
+            echo "<script>alert('Failed to upload first image.');</script>";
         }
-    } else {
-        $sql = "UPDATE product SET product_name='$product_name', product_description='$product_description', product_type='$product_type', f_category='$f_category', product_price='$product_price' WHERE product_id='$product_id'";
     }
-    
-    if ($conn->query($sql)) {
-        echo "<script>alert('Product Updated Successfully');</script>";
+
+    if (!empty($image2)) {
+        $target2 = "uploads/" . basename($image2);
+        if (move_uploaded_file($_FILES['image2']['tmp_name'], $target2)) {
+            $update_query .= ", image2='$target2'";
+        } else {
+            echo "<script>alert('Failed to upload second image.');</script>";
+        }
+    }
+
+    $update_query .= " WHERE product_id='$product_id'";
+
+    // Execute the update query
+    if ($conn->query($update_query)) {
+        echo "<script>alert('Product Updated Successfully'); window.location.href='admin-product.php';</script>";
     } else {
         echo "<script>alert('Error: " . $conn->error . "');</script>";
     }
-    echo '<meta http-equiv="refresh" content="0;url=admin-product.php">';
-    exit();
 }
 
 // Delete Product
@@ -105,6 +127,7 @@ $result = $conn->query($sql);
                     <th>Category</th>
                     <th>Feature</th>
                     <th>Price</th>                    
+                    <th>Image</th>
                     <th>Image</th>
                     <th>Actions</th>
                 </tr>

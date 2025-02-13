@@ -17,8 +17,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard | Bellelise & Co.</title>
-  <link rel="icon" href="images/icon2.png">
+  <title>Admin Dashboard</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
@@ -31,7 +30,7 @@
     <div class="sidebar" id="sidebar">
       <div class="brand">
         <i class="fas fa-gem"></i>
-        <span>BELLELISE</span>
+        <span>Bellelise</span>
       </div>
         <div class="user-info"> 
             
@@ -50,15 +49,13 @@
      
       <ul class="nav-links">
         <li><a href="admin.php" class="active"><i class="fas fa-tachometer-alt "></i> Dashboard</a></li>
-        <li><a href=""><i class="fas fa-box"></i> Product</a></li>
-        <li><a href="#"><i class="fas fa-list"></i> Order List</a></li>
-        <li><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
-        <li><a href="#"><i class="fas fa-warehouse"></i> Stock</a></li>
-        <li><a href="#"><i class="fas fa-shopping-cart"></i> Total Order</a></li>
-        <li><a href="#"><i class="fas fa-users"></i> Team</a></li>
-        <li><a href="#"><i class="fas fa-envelope"></i> Messages</a></li>
-        <li><a href="#"><i class="fas fa-cogs"></i> Settings</a></li>
-        <li><a href=""><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+        <li><a href="admin-product.php"><i class="fas fa-box"></i> Product</a></li>
+        <li><a href="admin-order-list.php"><i class="fas fa-list"></i> Order List</a></li>
+        <li><a href="admin-analytics.php"><i class="fas fa-chart-line"></i> Analytics</a></li>
+        <li><a href="admin-stock.php"><i class="fas fa-warehouse"></i> Stock</a></li>       
+        <li><a href="admin-team.php"><i class="fas fa-users"></i> Team</a></li>
+        <li><a href="admin-message.php"><i class="fas fa-envelope"></i> Messages</a></li>
+        <li><a href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
       </ul>
     </div>
 
@@ -97,7 +94,7 @@
     <div class="box">
       <div class="right-side">
         <div class="box-topic">Total Sales</div>
-        <div class="number">$25,431</div>
+        <div class="number">₹25,431</div>
         <div class="indicator">
           <i class='bx bx-up-arrow-alt'></i>
           <span class="text">Increased today</span>
@@ -123,7 +120,7 @@
     <div class="box">
       <div class="right-side">
         <div class="box-topic">Revenue</div>
-        <div class="number">$10,876</div>
+        <div class="number">₹10,876</div>
         <div class="indicator">
           <i class='bx bx-up-arrow-alt'></i>
           <span class="text">Higher profits</span>

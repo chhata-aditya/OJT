@@ -89,5 +89,48 @@
     </section>
   </main>
 
+<!-- Message Icon -->
+
+<div id="messageIcon" onclick="openMessageForm()" style="position: fixed; bottom: 20px; right: 20px; cursor: pointer;">
+    <i class='fas fa-comment-dots' ></i> <!-- Using Boxicons -->
+</div>
+
+  <!-- Pop-up Form -->
+  <div class="popup-form" id="messageForm">
+        <button class="close-btn" onclick="closeMessageForm()">&times;</button>
+        <h3>Send a Message</h3>
+        <form action="send-message.php" method="post">
+            <input type="text" name="user_name" placeholder="Your Name" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <?php
+if (isset($_GET['message'])) {
+    if ($_GET['message'] == 'success') {
+        echo "<p style='color: green; text-align: center;'>Message sent successfully!</p>";
+    } elseif ($_GET['message'] == 'error') {
+        echo "<p style='color: red; text-align: center;'>Message sending failed!</p>";
+    }
+}
+?>
+
+<script>
+  function openMessageForm() {
+	document.getElementById("messageForm").classList.add("active");
+}
+
+function closeMessageForm() {
+	document.getElementById("messageForm").classList.remove("active");
+}
+// Check if the message was sent successfully
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('message') === 'success') {
+	alert("Message sent successfully!"); // Optional alert
+} else if (urlParams.get('message') === 'error') {
+	alert("Message sending failed!"); // Optional alert
+}
+</script>
+
 </body>
 </html>

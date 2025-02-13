@@ -48,10 +48,10 @@
      
       <ul class="nav-links">
         <li><a href="admin.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-        <li><a href="admin-product.php" class="active"><i class="fas fa-box"></i> Product</a></li>
+        <li><a href="admin-product.php" ><i class="fas fa-box"></i> Product</a></li>
         <li><a href="admin-order.php" ><i class="fas fa-list"></i> Order List</a></li>
         <li><a href="admin-analytics.php"><i class="fas fa-chart-line"></i> Analytics</a></li>
-        <li><a href="admin-stock.php"><i class="fas fa-warehouse"></i> Stock</a></li>    
+        <li><a href="admin-stock.php"class="active"><i class="fas fa-warehouse"></i> Stock</a></li>    
         <li><a href="admin-team.php"><i class="fas fa-users"></i> Team</a></li>
         <li><a href="admin-message.php"><i class="fas fa-envelope"></i> Messages</a></li>
         <li><a href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
@@ -71,13 +71,10 @@
         
       </div>
       <div class="content">
-        <h1>Product</h1>
+        <h1>Stock Management</h1>
       </div>
      
-<?php
-       include("admin-add-product.php");
-       
-      ?>
+
 
 
   </div>

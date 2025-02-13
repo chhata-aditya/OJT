@@ -48,12 +48,12 @@
      
       <ul class="nav-links">
         <li><a href="admin.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-        <li><a href="admin-product.php" class="active"><i class="fas fa-box"></i> Product</a></li>
+        <li><a href="admin-product.php"><i class="fas fa-box"></i> Product</a></li>
         <li><a href="admin-order.php" ><i class="fas fa-list"></i> Order List</a></li>
-        <li><a href="admin-analytics.php"><i class="fas fa-chart-line"></i> Analytics</a></li>
+        <li><a href="admin-analytics.php" ><i class="fas fa-chart-line"></i> Analytics</a></li>
         <li><a href="admin-stock.php"><i class="fas fa-warehouse"></i> Stock</a></li>    
         <li><a href="admin-team.php"><i class="fas fa-users"></i> Team</a></li>
-        <li><a href="admin-message.php"><i class="fas fa-envelope"></i> Messages</a></li>
+        <li><a href="admin-message.php"class="active"><i class="fas fa-envelope"></i> Messages</a></li>
         <li><a href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
       </ul>
     </div>
@@ -71,13 +71,50 @@
         
       </div>
       <div class="content">
-        <h1>Product</h1>
+        <h1>Messages</h1>
+        <!-- Table -->
+<div class="box-container" style="margin: 25px 0px 0px 5px;">
+    <div class="box-header">
+      <span>User Messages</span>
+    </div>
+    
+    <table class="user-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Message</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        include 'connection.php'; // Ensure database connection is included
+
+        $sql = "SELECT * FROM message ORDER BY created_at DESC"; // Fetch messages
+        $result = $conn->query($sql);
+        
+        if ($result->num_rows > 0) {
+          while ($row = $result->fetch_assoc()) {
+            echo "<tr>
+              <td>{$row['message_id']}</td>
+              <td>{$row['user_name']}</td>
+              <td>{$row['message']}</td>
+              <td>{$row['created_at']}</td>
+            </tr>";
+          }
+        } else {
+          echo "<tr><td colspan='4'>No messages found</td></tr>";
+        }
+
+        $conn->close(); // Close the database connection
+        ?>
+      </tbody>
+    </table>
+</div>
+
       </div>
      
-<?php
-       include("admin-add-product.php");
-       
-      ?>
 
 
   </div>
