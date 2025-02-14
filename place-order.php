@@ -33,6 +33,7 @@ $user_address = "{$address['Fname']} {$address['Lname']}, {$address['houseno']},
 while ($row = $result->fetch_assoc()) {
     $product_id = $row['product_id'];
 
+    // Insert into orders table
     $insert_sql = "INSERT INTO orders (user_id, product_id, user_address, order_status)
                    VALUES ('$user_id', '$product_id', '$user_address', 'Pending')";
 
@@ -40,7 +41,14 @@ while ($row = $result->fetch_assoc()) {
         echo "<script>alert('Error placing order: " . $conn->error . "');</script>";
         exit();
     }
+
+    // *Update stock in the stocks table*
+    $updateStock = $conn->prepare("UPDATE stocks SET current_stock = GREATEST(current_stock - 1, 0) WHERE product_id = ?");
+    $updateStock->bind_param("i", $product_id);
+    $updateStock->execute();
 }
+
+// *Cart is NOT cleared*
 
 echo "<script>alert('Order placed successfully!'); window.location.href='checkout.php';</script>";
 exit();

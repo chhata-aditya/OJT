@@ -59,11 +59,13 @@ $conn->close();
 </head>
 <body>
 <style>
+    @import url("style.css");
     body {
-        font-family: Arial, sans-serif;
         background-color: #f4f4f4;
-        margin: 0;
+        margin: auto 0;
         padding: 20px;
+        overflow: hidden;
+
     }
 
     .container {
@@ -101,7 +103,7 @@ $conn->close();
         padding: 20px;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        max-height: 500px;
+        max-height: 400px;
         overflow-y: auto;
     }
 
@@ -115,7 +117,7 @@ $conn->close();
         padding: 10px;
         border: 1px solid #ccc;
         border-radius: 5px;
-        width: 100%;
+        width: 95%;
     }
 
     button {
