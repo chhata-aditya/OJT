@@ -1,40 +1,41 @@
 <?php
 $servername = "localhost";
-$username = "root"; // Your database username
-$password = ""; // Your database password
-$dbname = "bellelise"; // Your database name
+$username = "root"; 
+$password = ""; 
+$dbname = "bellelise"; 
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Database connection failed: " . $conn->connect_error);
 }
 
-// Handle form submission
+// Handle form submission (POST request)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $data = json_decode(file_get_contents("php://input"), true);
-    $name = $conn->real_escape_string($data['user_name']);
-    $review = $conn->real_escape_string($data['review']);
+    if (!empty($_POST['user_name']) && !empty($_POST['review'])) {
+        $name = $conn->real_escape_string($_POST['user_name']);
+        $review = $conn->real_escape_string($_POST['review']);
 
-    // Insert the review into the database
-    $sql = "INSERT INTO review (user_name, review) VALUES ('$name', '$review')";
-    if ($conn->query($sql) === TRUE) {
-        echo json_encode([
-            'success' => true, 
-            'user_name' => $name, 
-            'review' => $review, 
-            'created_at' => date('Y-m-d H:i:s')
-        ]);
+        // Insert into database
+        $sql = "INSERT INTO review (user_name, review, created_at) VALUES (?, ?, NOW())";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ss", $name, $review);
+
+        if ($stmt->execute()) {
+            echo "<p style='color:green;'>Review added successfully!</p>";
+        } else {
+            echo "<p style='color:red;'>Error: " . $conn->error . "</p>";
+        }
+
+        $stmt->close();
     } else {
-        echo json_encode(['success' => false, 'error' => $conn->error]);
+        echo "<p style='color:red;'>Please fill out all fields.</p>";
     }
-    $conn->close();
-    exit; // Exit after handling the POST request
 }
 
-// Fetch reviews from the database
+// Fetch reviews
 $sql = "SELECT user_name, review, created_at FROM review ORDER BY created_at DESC";
 $result = $conn->query($sql);
 
@@ -44,6 +45,7 @@ if ($result->num_rows > 0) {
         $reviews[] = $row;
     }
 }
+
 $conn->close();
 ?>
 
@@ -54,7 +56,9 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Reviews | Bellelise & Co.</title>
     <link rel="icon" href="images/icon2.png">
-    <style>
+</head>
+<body>
+<style>
     body {
         font-family: Arial, sans-serif;
         background-color: #f4f4f4;
@@ -84,7 +88,7 @@ $conn->close();
     }
 
     .review-form {
-        flex: 1; /* Makes both sections take equal width */
+        flex: 1;
         background: white;
         padding: 20px;
         border-radius: 5px;
@@ -92,12 +96,12 @@ $conn->close();
     }
 
     #reviews {
-        flex: 1; /* Ensures reviews section aligns properly */
+        flex: 1;
         background: white;
         padding: 20px;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        max-height: 500px; /* Optional: Keeps it from getting too long */
+        max-height: 500px;
         overflow-y: auto;
     }
 
@@ -150,9 +154,9 @@ $conn->close();
     <div class="content">
         <!-- Review Form -->
         <div class="review-form">
-            <form id="reviewForm">
-                <input type="text" id="user_name" placeholder="Your Name" required>
-                <textarea id="review" placeholder="Your Review" required></textarea>
+            <form method="POST" action="">
+                <input type="text" name="user_name" placeholder="Your Name" required>
+                <textarea name="review" placeholder="Your Review" required></textarea>
                 <button type="submit">Submit Review</button>
             </form>
         </div>
@@ -169,3 +173,5 @@ $conn->close();
         </div>
     </div>
 </div>
+</body>
+</html>
