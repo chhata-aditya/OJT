@@ -35,6 +35,7 @@ if (isset($_POST['add_product'])) {
 }
 
 
+
 // Update Product
 if (isset($_POST['edit_product'])) {
     $product_id = $_POST['product_id'];
@@ -44,10 +45,6 @@ if (isset($_POST['edit_product'])) {
     $f_category = $_POST['f_category'];
     $product_price = $_POST['product_price'];
 
-    // Handle optional image uploads
-    $product_image = $_FILES['product_image']['name'];
-    $image2 = $_FILES['image2']['name'];
-
     $update_query = "UPDATE product SET 
                         product_name='$product_name', 
                         product_description='$product_description', 
@@ -55,28 +52,23 @@ if (isset($_POST['edit_product'])) {
                         f_category='$f_category', 
                         product_price='$product_price'";
 
-    // Check if new images are uploaded
-    if (!empty($product_image)) {
-        $target1 = "uploads/" . basename($product_image);
+    // Handle optional image uploads
+    if (!empty($_FILES['product_image']['name'])) {
+        $target1 = "uploads/" . basename($_FILES['product_image']['name']);
         if (move_uploaded_file($_FILES['product_image']['tmp_name'], $target1)) {
             $update_query .= ", product_image='$target1'";
-        } else {
-            echo "<script>alert('Failed to upload first image.');</script>";
         }
     }
 
-    if (!empty($image2)) {
-        $target2 = "uploads/" . basename($image2);
+    if (!empty($_FILES['image2']['name'])) {
+        $target2 = "uploads/" . basename($_FILES['image2']['name']);
         if (move_uploaded_file($_FILES['image2']['tmp_name'], $target2)) {
             $update_query .= ", image2='$target2'";
-        } else {
-            echo "<script>alert('Failed to upload second image.');</script>";
         }
     }
 
     $update_query .= " WHERE product_id='$product_id'";
 
-    // Execute the update query
     if ($conn->query($update_query)) {
         echo "<script>alert('Product Updated Successfully'); window.location.href='admin-product.php';</script>";
     } else {
@@ -200,11 +192,25 @@ $result = $conn->query($sql);
 <div id="editProductModal" class="modal">
     <div class="modal-content">
         <form method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="id" id="edit_id">
+            <input type="hidden" name="product_id" id="edit_id">
             <h3>Edit Product</h3>
             <input type="text" name="product_name" id="edit_name" placeholder="Product Name" required>
             <textarea name="product_description" id="edit_description" placeholder="Description" required></textarea>
-            <input type="text" name="product_type" id="edit_category" placeholder="Category Name" required>
+            
+            <select name="product_type" id="edit_category"required>
+                <option value="" disabled selected>Select Product Type</option>
+                <option value="Necklace">Necklace</option>
+                <option value="Earrings">Earrings</option>
+                <option value="Bracelet">Bracelet</option>
+                <option value="Ring">Ring</option>
+                <option value="Anklet">Anklet</option>
+            </select>
+            <select name="f_category" id="edit_category">
+                <option value="" disabled selected>Select Featured Category</option>
+                <option value="Titanic">Titanic</option>
+                <option value="Bridgerton">Bridgerton</option>
+                <option value="Rapunzel">Rapunzel</option>
+            </select required>
             <input type="number" name="product_price" id="edit_price" placeholder="Price" step="0.01" required>
             <input type="file" name="product_image" accept="image/*">
             <input type="file" name="image2" accept="image/*">

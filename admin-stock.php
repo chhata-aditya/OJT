@@ -29,7 +29,7 @@
     <div class="sidebar" id="sidebar">
       <div class="brand">
         <i class="fas fa-gem"></i>
-        <span>JEWEL</span>
+        <span>Bellelise</span>
       </div>
         <div class="user-info"> 
             

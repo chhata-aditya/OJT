@@ -29,7 +29,7 @@
     <div class="sidebar" id="sidebar">
       <div class="brand">
         <i class="fas fa-gem"></i>
-        <span>JEWEL</span>
+        <span>Bellelise</span>
       </div>
         <div class="user-info"> 
             
@@ -65,21 +65,76 @@
           <i class="fas fa-bars"></i>
         </div>
         <div class="search-bar">
-          <input type="text" placeholder="Search...">
-          <button><i class="fas fa-search"></i></button>
-        </div>
+    <form method="GET">
+        <input type="text" name="search_query" placeholder="Search..." value="<?php echo isset($_GET['search_query']) ? $_GET['search_query'] : ''; ?>">
+        <button type="submit"><i class="fas fa-search"></i></button>
+    </form>
+</div>
+
+<?php
+// Search functionality
+$searchResults = [];
+if (isset($_GET['search_query']) && !empty($_GET['search_query'])) {
+    $searchQuery = $_GET['search_query'];
+    $sql = "SELECT product_id, product_name FROM product WHERE product_id LIKE ? OR product_name LIKE ?";
+    
+    if ($stmt = $conn->prepare($sql)) {
+        $searchTerm = "%" . $searchQuery . "%";
+        $stmt->bind_param("ss", $searchTerm, $searchTerm);
+        
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            while ($row = $result->fetch_assoc()) {
+                $searchResults[] = $row;
+            }
+        } else {
+            echo "Execute Error: " . $stmt->error;
+        }
+        $stmt->close();
+    } else {
+        echo "Prepare Error: " . $conn->error;
+    }
+}
+
+?>
+
+
         
       </div>
       <div class="content">
-        <h1>Product</h1>
+        <h1>Product </h1>       
       </div>
+
      
 <?php
+
        include("admin-add-product.php");
        
       ?>
 
-
+ <!-- Display search results -->
+ <?php if (!empty($searchResults)): ?>
+    <h2>Search Results</h2>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($searchResults as $product): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($product['product_id']); ?></td>
+                    <td><?php echo htmlspecialchars($product['product_name']); ?></td>
+                  
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php elseif (isset($_GET['search_query'])): ?>
+    <p>No results found for "<?php echo htmlspecialchars($_GET['search_query']); ?>"</p>
+<?php endif; ?>
   </div>
    
   </div>

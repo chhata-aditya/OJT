@@ -6,7 +6,7 @@ include("connection.php");
 $product_type = isset($_GET['product_type']) ? $_GET['product_type'] : "";
 $min_price = isset($_GET['min_price']) ? $_GET['min_price'] : 0;
 $max_price = isset($_GET['max_price']) ? $_GET['max_price'] : PHP_INT_MAX;
-$material = isset($_GET['material']) ? $_GET['material'] : "";
+$f_category = isset($_GET['f_category']) ? $_GET['f_category'] : "";
 
 // Build the query dynamically
 $sql = "SELECT * FROM product WHERE 1=1";
@@ -19,9 +19,9 @@ if (!empty($product_type)) {
     $types .= "s";
 }
 
-if (!empty($material)) {
-    $sql .= " AND material = ?";
-    $params[] = $material;
+if (!empty($f_category)) {
+    $sql .= " AND f_category = ?";
+    $params[] = $f_category;
     $types .= "s";
 }
 
@@ -156,11 +156,11 @@ $all_product = $stmt->get_result();
 
     <!-- Material Filter -->
     <div class="sidebar-section">
-        <p>Material</p>
+        <p>Featured Sets</p>
         <ul>
-            <li><a href="?material=Gold">Gold</a></li>
-            <li><a href="?material=Silver">Silver</a></li>
-            <li><a href="?material=Platinum">Platinum</a></li>
+            <li><a href="?f_category=Titanic">Titanic</a></li>
+            <li><a href="?f_category=Rapunzel">Rapunzel</a></li>
+            <li><a href="?f_category=Bridgerton">Bridgerton</a></li>
         </ul>
     </div>
 </div>

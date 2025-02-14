@@ -177,7 +177,7 @@ if (isset($_POST['edit_team'])) {
     $update_query .= " WHERE team_id='$team_id'";
 
     if ($conn->query($update_query)) {
-        echo "<script>alert('Team Member Updated Successfully'); window.location.href='try.php';</script>";
+        echo "<script>alert('Team Member Updated Successfully');</script>";
     } else {
         echo "<script>alert('Error: " . $conn->error . "');</script>";
     }
@@ -192,7 +192,7 @@ if (isset($_GET['delete_id'])) {
     } else {
         echo "<script>alert('Error: " . $conn->error . "');</script>";
     }
-    echo '<meta http-equiv="refresh" content="0;url=try.php">';
+    echo '<meta http-equiv="refresh" content="0;url=admin-team.php">';
     exit();
 }
 

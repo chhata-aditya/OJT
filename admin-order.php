@@ -29,7 +29,7 @@
     <div class="sidebar" id="sidebar">
       <div class="brand">
         <i class="fas fa-gem"></i>
-        <span>JEWEL</span>
+        <span>Bellelise</span>
       </div>
         <div class="user-info"> 
             
@@ -74,36 +74,40 @@
         <h1>Order Management</h1>
         <div class="box-container" style="margin: 25px 0px 0px 5px;">
     <div class="box-header">
-      <span>User Messages</span>
+      <span>Orders</span>
     </div>
     
     <table class="user-table">
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Message</th>
-          <th>Date</th>
+          <th>Oreder ID</th>
+          <th>User ID</th>
+          <th>Product ID</th>
+          <th>User Address</th>
+          <th>Date of placing Order</th>
+          <th>Oreder Status</th>
         </tr>
       </thead>
       <tbody>
         <?php
         include 'connection.php'; // Ensure database connection is included
 
-        $sql = "SELECT * FROM message ORDER BY created_at DESC"; // Fetch messages
+        $sql = "SELECT * FROM orders ORDER BY created_at DESC"; // Fetch messages
         $result = $conn->query($sql);
         
         if ($result->num_rows > 0) {
           while ($row = $result->fetch_assoc()) {
             echo "<tr>
-              <td>{$row['message_id']}</td>
-              <td>{$row['user_name']}</td>
-              <td>{$row['message']}</td>
+              <td>{$row['order_id']}</td>
+              <td>{$row['user_id']}</td>
+              <td>{$row['product_id']}</td>
+              <td>{$row['user_address']}</td>
               <td>{$row['created_at']}</td>
+              <td>{$row['order_status']}</td>
             </tr>";
           }
         } else {
-          echo "<tr><td colspan='4'>No messages found</td></tr>";
+          echo "<tr><td colspan='4'>No orders found</td></tr>";
         }
 
         $conn->close(); // Close the database connection
