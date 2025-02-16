@@ -110,6 +110,7 @@ $all_product = $stmt->get_result();
             <li><a href="?product_type=Earrings">Earrings</a></li>
             <li><a href="?product_type=Bracelets">Bracelets</a></li>
             <li><a href="?product_type=Ring">Rings</a></li>
+            <li><a href="?product_type=Anklet">Anklets</a></li>
         </ul>
     </div> <br>
 

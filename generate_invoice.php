@@ -65,14 +65,14 @@ $pdf->Ln(5);
     $pdf->SetFont('Arial', '', 12);
     $pdf->Cell(100, 10, $product_name , 1, 0, 'C');
     $pdf->Cell(30, 10, "1", 1, 0, 'C');
-    $pdf->Cell(30, 10, "₹" . $amount, 1, 0, 'C');
-    $pdf->Cell(30, 10, "₹" . $amount, 1, 1, 'C');
+    $pdf->Cell(30, 10, "Rs. " . $amount, 1, 0, 'C');
+    $pdf->Cell(30, 10, "Rs. " . $amount, 1, 1, 'C');
 
     // Grand Total
     $pdf->SetFont('Arial', 'B', 12);
     $pdf->SetFillColor(238, 238, 238);
     $pdf->Cell(160, 10, "GRAND TOTAL", 1, 0, 'R', true);
-    $pdf->Cell(30, 10, "₹" . $amount, 1, 1, 'C', true);
+    $pdf->Cell(30, 10, "Rs. " . $amount, 1, 1, 'C', true);
     
     $pdf->Ln(10);
 
