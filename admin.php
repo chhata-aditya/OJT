@@ -50,7 +50,7 @@
       <ul class="nav-links">
         <li><a href="admin.php" class="active"><i class="fas fa-tachometer-alt "></i> Dashboard</a></li>
         <li><a href="admin-product.php"><i class="fas fa-box"></i> Product</a></li>
-        <li><a href="admin-order-list.php"><i class="fas fa-list"></i> Order List</a></li>
+        <li><a href="admin-order.php"><i class="fas fa-list"></i> Order List</a></li>
         <li><a href="admin-analytics.php"><i class="fas fa-chart-line"></i> Analytics</a></li>
         <li><a href="admin-stock.php"><i class="fas fa-warehouse"></i> Stock</a></li>       
         <li><a href="admin-team.php"><i class="fas fa-users"></i> Team</a></li>
@@ -81,7 +81,7 @@
     <div class="box">
       <div class="right-side">
         <div class="box-topic">Total Order</div>
-        <div class="number">40,876</div>
+        <div class="number">5</div>
         <div class="indicator">
           <i class='bx bx-up-arrow-alt'></i>
           <span class="text">Up from yesterday</span>
@@ -94,7 +94,7 @@
     <div class="box">
       <div class="right-side">
         <div class="box-topic">Total Sales</div>
-        <div class="number">₹25,431</div>
+        <div class="number">₹0</div>
         <div class="indicator">
           <i class='bx bx-up-arrow-alt'></i>
           <span class="text">Increased today</span>
@@ -107,7 +107,7 @@
     <div class="box">
       <div class="right-side">
         <div class="box-topic">New Users</div>
-        <div class="number">1,234</div>
+        <div class="number">4</div>
         <div class="indicator">
           <i class='bx bx-up-arrow-alt'></i>
           <span class="text">Growing steadily</span>
@@ -120,7 +120,7 @@
     <div class="box">
       <div class="right-side">
         <div class="box-topic">Revenue</div>
-        <div class="number">₹10,876</div>
+        <div class="number">₹0</div>
         <div class="indicator">
           <i class='bx bx-up-arrow-alt'></i>
           <span class="text">Higher profits</span>

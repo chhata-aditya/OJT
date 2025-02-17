@@ -140,7 +140,7 @@ if (isset($_POST['add_team'])) {
                 VALUES ('$team_name', '$team_role', '$team_contact', '$team_email', '$target')";
 
         if ($conn->query($sql)) {
-            echo "<script>alert('Team Member Added Successfully'); window.location.href='admin-team..php';</script>";
+            echo "<script>alert('Team Member Added Successfully'); </script>";
         } else {
             echo "<script>alert('Error: " . $conn->error . "');</script>";
         }

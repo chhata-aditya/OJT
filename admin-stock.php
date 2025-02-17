@@ -74,7 +74,101 @@
         <h1>Stock Management</h1>
       </div>
      
+<div>
+<?php
+// Include database connection
+include("connection.php");
 
+// Add Initial Stock
+if (isset($_POST['add_stock'])) {
+    $product_id = $_POST['product_id'];
+    $initial_stock = $_POST['initial_stock'];
+
+    // Check if stock already exists for this product
+    $checkStock = $conn->prepare("SELECT * FROM stocks WHERE product_id = ?");
+    $checkStock->bind_param("i", $product_id);
+    $checkStock->execute();
+    $result = $checkStock->get_result();
+
+    if ($result->num_rows > 0) {
+        echo "<script>alert('Stock already exists for this product!');</script>";
+    } else {
+        // Insert initial stock
+        $insertStock = $conn->prepare("INSERT INTO stocks (product_id, initial_stock, current_stock) VALUES (?, ?, ?)");
+        $insertStock->bind_param("iii", $product_id, $initial_stock, $initial_stock);
+        if ($insertStock->execute()) {
+            echo "<script>alert('Stock Added Successfully!'); window.location.href='admin-stock.php';</script>";
+        } else {
+            echo "<script>alert('Error: " . $conn->error . "');</script>";
+        }
+    }
+}
+
+// Fetch products from product table
+$productQuery = "SELECT product_id, product_name, product_image FROM product";
+$productResult = $conn->query($productQuery);
+
+// Fetch stocks with product details
+$stockQuery = "SELECT s.stock_id, s.product_id, p.product_name, p.product_image, s.initial_stock, s.current_stock 
+               FROM stocks s 
+               JOIN product p ON s.product_id = p.product_id";
+$stockResult = $conn->query($stockQuery);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Management</title>
+    <link rel="stylesheet" href="admin-stock.css">
+</head>
+<body>
+    
+
+    <!-- Add Stock Form -->
+    <h3>Add Initial Stock</h3>
+    <form method="POST">
+        <label>Select Product:</label>
+        <select name="product_id" required>
+            <option value="" disabled selected>Select a product</option>
+            <?php while ($row = $productResult->fetch_assoc()) { ?>
+                <option value="<?php echo $row['product_id']; ?>"><?php echo $row['product_name']; ?></option>
+            <?php } ?>
+        </select>
+        <label>Initial Stock:</label>
+        <input type="number" name="initial_stock" required>
+        <button type="submit" name="add_stock">Add Stock</button>
+    </form>
+
+    <!-- Display Stocks -->
+    <h3>Stock List</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Image</th>
+                <th>Product Name</th>
+                <th>Initial Stock</th>
+                <th>Current Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php while ($row = $stockResult->fetch_assoc()) { ?>
+                <tr>
+                    <td><?php echo $row['product_id']; ?></td>
+                    <td><img src="<?php echo $row['product_image']; ?>" alt="Product Image"></td>
+                    <td><?php echo $row['product_name']; ?></td>
+                    <td><?php echo $row['initial_stock']; ?></td>
+                    <td><?php echo $row['current_stock']; ?></td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+</body>
+</html>
+
+</div>
 
 
   </div>

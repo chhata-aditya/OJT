@@ -2,6 +2,7 @@
 body{
   overflow-x: hidden;
   margin: 0 auto;
+  background-color: #eee;
 }
 .text-blk {
   padding: 0;
@@ -23,7 +24,7 @@ body{
     }
 
     .responsive-container-block.bigContainer {
-      background-color: rgb(197, 196, 196);
+      background-color:#C5C4C4;
       padding: 10px 20px;
       margin: 0;
     }
@@ -52,6 +53,7 @@ body{
       font-weight: 900;
       color:rgb(8, 8, 8);
       margin: 0 0 40px 0;
+      margin-top: -200px;
     }
 
     .text-blk.btn {
@@ -121,6 +123,7 @@ body{
     .text-blk.subHeading {
       font-size: 14px;
       line-height: 25px;
+      width: 370px;
     }
 
     /* Responsive Styles */
@@ -192,4 +195,3 @@ body{
         width: 100%;
       }
     }
- 

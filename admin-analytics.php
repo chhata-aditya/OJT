@@ -236,7 +236,7 @@ $counts_json = json_encode($counts);
                     backgroundColor: [
                         'rgba(255, 65, 106, 0.6)',   // Rapunzel
                         'rgba(39, 114, 165, 0.6)',   // Bridgerton
-                        'rgba(189, 61, 82, 0.6)' ,   // Titanic
+                        'rgba(221, 34, 34, 0.6)' ,   // Titanic
                         'rgba(88, 199, 153, 0.6)'    // Titanic
                     ],
                     borderColor: 'rgba(0, 0, 0, 0.1)',
@@ -254,6 +254,7 @@ $counts_json = json_encode($counts);
         });
     });
 </script>
+
 
 
 </p>
